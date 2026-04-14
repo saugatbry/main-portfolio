@@ -8,20 +8,26 @@ import Skills from './sections/Skills';
 import Process from './sections/Process';
 import Contact from './sections/Contact';
 import HireMe from './sections/HireMe';
+import Admin from './sections/Admin';
 import { Terminal, Users } from 'lucide-react';
 import Background3D from './components/Background3D';
 import AudioPlayer from './components/AudioPlayer';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'main' | 'hire'>('main');
+  const [currentPage, setCurrentPage] = useState<'main' | 'hire' | 'admin'>('main');
   const [visits, setVisits] = useState<number>(0);
 
   useEffect(() => {
-    // Basic hit counter using a free service (CountAPI fallback)
+    // Check if user is trying to access admin via URL
+    if (window.location.search.includes('panel=admin') || window.location.pathname === '/administration') {
+      setCurrentPage('admin');
+    }
+
+    // Visitor tracking
     fetch('https://api.countapi.xyz/hit/saugatbry-portfolio/visits')
       .then(res => res.json())
       .then(data => setVisits(data.value || 1204))
-      .catch(() => setVisits(Math.floor(Math.random() * 500) + 1000)); // Fallback mock
+      .catch(() => setVisits(Math.floor(Math.random() * 500) + 1000));
   }, []);
 
   return (
@@ -29,7 +35,11 @@ function App() {
       <CustomCursor />
       
       <AnimatePresence mode="wait">
-        {currentPage === 'main' ? (
+        {currentPage === 'admin' ? (
+          <motion.div key="admin" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <Admin onLogout={() => setCurrentPage('main')} />
+          </motion.div>
+        ) : currentPage === 'main' ? (
           <motion.div
             key="main"
             initial={{ opacity: 0 }}
@@ -52,7 +62,6 @@ function App() {
               </motion.div>
               
               <div className="flex items-center gap-6 pointer-events-auto">
-                {/* Visitor Counter */}
                 <div className="flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-white/5 backdrop-blur-md">
                   <Users size={12} className="text-cyber-neon" />
                   <span className="font-mono text-[10px] text-gray-400">
