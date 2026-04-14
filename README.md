@@ -1,7 +1,7 @@
 # 🌌 SAUGAT BRY // SYSTEM_TERMINAL
 > Next-Generation Cyberpunk Portfolio Experience
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Operational-000000?style=for-the-badge&logo=vercel)](https://futuristic-portfolio-five.vercel.app/)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Operational-000000?style=for-the-badge&logo=vercel)](https://saugatbry.online/)
 [![GitHub Stars](https://img.shields.io/github/stars/psyxd1/main-portfolio?style=for-the-badge&color=00f3ff&logo=github)](https://github.com/psyxd1/main-portfolio/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff00ff?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
@@ -34,7 +34,7 @@ Connect with me across the digital sector.
 [Instagram](https://www.instagram.com/saugat_bry) 
 • [GitHub](https://github.com/psyxd1) 
 • [Email](mailto:psyduckbry@gmail.com) 
-• [Portfolio](https://futuristic-portfolio-five.vercel.app/)
+• [Portfolio](https://saugatbry.online/)
 
 ---
 
