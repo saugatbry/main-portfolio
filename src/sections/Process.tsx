@@ -14,6 +14,7 @@ const Process = () => {
   const containerRef = React.useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.5 });
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
