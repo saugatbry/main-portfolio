@@ -49,14 +49,9 @@ const Contact = () => {
           ))}
         </div>
         
-        <div className="mt-32 border-t border-white/5 pt-12 text-center text-gray-600 font-mono text-xs tracking-widest flex flex-col items-center gap-4">
-          <div className="flex gap-8">
-            <span>© 2026 SAUGAT BRY</span>
-            <span>DESIGNED BY ANTIGRAVITY</span>
-            <span>ENCRYPTED_OS_v4.2</span>
-          </div>
-          <p className="max-w-md mx-auto leading-loose">
-            BORN ON EARTH. FOCUSED ON THE FUTURE. BUILDING THE IMPOSSIBLE.
+        <div className="mt-40 pt-12 border-t border-white/5 text-center">
+          <p className="text-gray-600 font-mono text-xs uppercase tracking-[10px]">
+            © 2026 SAUGAT BRY SYSTEM // ALL RIGHTS RESERVED
           </p>
         </div>
       </div>
