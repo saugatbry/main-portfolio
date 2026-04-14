@@ -111,33 +111,35 @@ const Background3D = () => {
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1} color="#00f3ff" />
             
-            <Float speed={isMobile ? 1 : 2} rotationIntensity={isMobile ? 0.5 : 1} floatIntensity={1}>
-              <Sphere args={[1, isMobile ? 16 : 32, isMobile ? 32 : 64]} scale={2.4}>
-                <MeshDistortMaterial
-                  color="#00f3ff"
-                  attach="material"
-                  distort={isMobile ? 0.2 : 0.3}
-                  speed={isMobile ? 1 : 1.5}
-                  roughness={0.1}
-                  metalness={0.8}
-                  wireframe
-                />
-              </Sphere>
-            </Float>
-
             {!isMobile && (
-              <Float speed={1} rotationIntensity={2} floatIntensity={2}>
-                <Sphere args={[1, 32, 64]} scale={1.8}>
-                  <MeshDistortMaterial
-                    color="#ff00ff"
-                    attach="material"
-                    distort={0.4}
-                    speed={2}
-                    roughness={0.1}
-                    metalness={0.8}
-                  />
-                </Sphere>
-              </Float>
+              <>
+                <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+                  <Sphere args={[1, 32, 64]} scale={2.4}>
+                    <MeshDistortMaterial
+                      color="#00f3ff"
+                      attach="material"
+                      distort={0.3}
+                      speed={1.5}
+                      roughness={0.1}
+                      metalness={0.8}
+                      wireframe
+                    />
+                  </Sphere>
+                </Float>
+
+                <Float speed={1} rotationIntensity={2} floatIntensity={2}>
+                  <Sphere args={[1, 32, 64]} scale={1.8}>
+                    <MeshDistortMaterial
+                      color="#ff00ff"
+                      attach="material"
+                      distort={0.4}
+                      speed={2}
+                      roughness={0.1}
+                      metalness={0.8}
+                    />
+                  </Sphere>
+                </Float>
+              </>
             )}
           </group>
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={isMobile ? 0.2 : 0.5} />
