@@ -41,17 +41,31 @@ const Process = () => {
         
         <div className="relative">
           {/* Animated Connecting SVG Line */}
-          <div className="absolute top-1/2 left-0 w-full h-8 -translate-y-1/2 hidden md:block">
+          <div className="absolute top-1/2 left-0 w-full h-24 -translate-y-1/2 hidden md:block px-10">
             <svg width="100%" height="100%" viewBox="0 0 1000 100" preserveAspectRatio="none">
+              <path
+                d="M 20 50 L 980 50"
+                fill="transparent"
+                stroke="rgba(0, 243, 255, 0.1)"
+                strokeWidth="2"
+              />
               <motion.path
-                d="M 0 50 Q 250 80 500 50 Q 750 20 1000 50"
+                d="M 20 50 L 980 50"
                 fill="transparent"
                 stroke="url(#line-gradient)"
-                strokeWidth="2"
-                strokeDasharray="10 5"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.3 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
+                strokeWidth="3"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 3, ease: "easeInOut" }}
+              />
+              <motion.circle
+                r="4"
+                fill="#00f3ff"
+                initial={{ offsetDistance: "0%" }}
+                animate={{ offsetDistance: "100%" }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                style={{ offsetPath: "path('M 20 50 L 980 50')", filter: "blur(2px)" }}
               />
               <defs>
                 <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -82,20 +96,25 @@ const Process = () => {
                     whileHover="hover"
                     className={`w-24 h-24 flex items-center justify-center relative z-10 
                       ${i < 2 ? 'bg-cyber-neon/10 border-cyber-neon/30' : 
-                        i === 3 ? 'bg-cyber-pink/10 border-cyber-pink/30' : 
+                        i === 3 ? 'bg-cyber-pink/10 border-cyber-pink/30 shadow-[0_0_20px_rgba(255,0,255,0.2)]' : 
                         'bg-cyber-green/10 border-cyber-green/30'} 
-                      border transition-colors duration-500 overflow-hidden backdrop-blur-sm`}
+                      border transition-all duration-500 overflow-visible backdrop-blur-sm`}
                   >
                     <AnimatePresence mode="wait">
                       {step.id === 'deploy' && activeStep === i ? (
                         <motion.div
                           key="rocket"
-                          initial={{ y: 50, opacity: 0 }}
-                          animate={{ y: -50, opacity: 1 }}
-                          transition={{ duration: 0.5 }}
-                          className="text-cyber-pink"
+                          initial={{ y: 0, opacity: 1 }}
+                          animate={{ y: -300, opacity: 0, scale: 1.5 }}
+                          transition={{ duration: 0.8, ease: "easeIn" }}
+                          className="text-cyber-pink drop-shadow-[0_0_10px_#ff00ff]"
                         >
-                          <Rocket size={36} />
+                          <Rocket size={40} className="rotate-0" />
+                          <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 1, 0] }}
+                            className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-4 h-12 bg-gradient-to-t from-transparent blur-sm via-cyber-pink to-white rounded-full z-[-1]"
+                          />
                         </motion.div>
                       ) : (
                         <motion.div
@@ -116,18 +135,21 @@ const Process = () => {
                     {/* Party Popper Effect behind 'Improve' */}
                     {step.id === 'improve' && activeStep === i && (
                       <div className="absolute inset-0 z-0 pointer-events-none">
-                        {[...Array(10)].map((_, idx) => (
+                        {[...Array(20)].map((_, idx) => (
                           <motion.div
                             key={idx}
                             initial={{ x: 0, y: 0, scale: 0 }}
                             animate={{ 
-                              x: (Math.random() - 0.5) * 60, 
-                              y: (Math.random() - 0.5) * 60, 
-                              scale: [0, 1, 0] 
+                              x: (Math.random() - 0.5) * 120, 
+                              y: (Math.random() - 0.5) * 120, 
+                              scale: [0, 1.2, 0],
+                              rotate: Math.random() * 360
                             }}
-                            transition={{ duration: 0.8, repeat: Infinity }}
-                            className="absolute left-1/2 top-1/2 w-1 h-1 bg-cyber-green rounded-full"
-                          />
+                            transition={{ duration: 1, repeat: Infinity }}
+                            className="absolute left-1/2 top-1/2 text-cyber-green font-mono text-[8px]"
+                          >
+                            {'{ }'}
+                          </motion.div>
                         ))}
                       </div>
                     )}
