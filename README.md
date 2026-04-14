@@ -1,47 +1,68 @@
-# Saugat Bry - Futuristic Portfolio 🚀
+# 🌌 SAUGAT BRY // SYSTEM_TERMINAL
+> Next-Generation Cyberpunk Portfolio Experience
 
-A next-generation, cyberpunk-styled portfolio built for a Game & Full-Stack Developer.
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Operational-000000?style=for-the-badge&logo=vercel)](https://futuristic-portfolio-five.vercel.app/)
+[![GitHub Stars](https://img.shields.io/github/stars/psyxd1/main-portfolio?style=for-the-badge&color=00f3ff&logo=github)](https://github.com/psyxd1/main-portfolio/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-ff00ff?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-## 🛠️ Tech Stack
-- **React + Vite** (Fast, modern SPA)
-- **Tailwind CSS** (Custom cyberpunk tokens & glassmorphism)
-- **Three.js + R3F** (Immersive 3D environments)
-- **Framer Motion** (Pro-grade animations & transitions)
-- **Last.fm API** (Real-time song tracking)
+---
 
-## 🚀 Getting Started
+## 🖥️ Core Architecture
+Built with high-performance frameworks and immersive 3D technologies for a true "Neural Link" feel.
 
-### Prerequisites
-- Node.js (v18+)
-- npm / yarn / pnpm
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 
-### Installation
-1. Clone the project or navigate to the directory.
-2. Install dependencies:
+---
+
+## 💎 Elite Features
+
+- **🎮 Game-Ready UI**: Projects displayed as a "Collection" with staggered thrown-card animations.
+- **🌌 3D Neural Space**: Persistent Three.js background with mouse-parallax and scroll-based blur.
+- **🛰️ Mission Control**: Secure, hidden admin portal (`/administration`) for live tracking.
+- **🎯 HUD Cursor**: High-precision custom cursor with real-time X/Y coordinates and target locking.
+- **🛸 Staggered UX**: Seamless performance optimizations for fluid navigation.
+
+---
+
+## 📬 Protocol: Social Connectivity
+Connect with me across the digital sector.
+
+[Instagram](https://www.instagram.com/saugat_bry) 
+• [GitHub](https://github.com/psyxd1) 
+• [Email](mailto:psyduckbry@gmail.com) 
+• [Portfolio](https://futuristic-portfolio-five.vercel.app/)
+
+---
+
+## 🛠️ Local Initialization
+
+1. **Clone the Terminal**
+   ```bash
+   git clone https://github.com/psyxd1/main-portfolio.git
+   ```
+
+2. **Sync Dependencies**
    ```bash
    npm install
    ```
 
-### Running Locally
-Run the development server:
-```bash
-npm run dev
-```
+3. **Boot System**
+   ```bash
+   npm run dev
+   ```
 
-### Building for Production
-```bash
-npm run build
-```
+---
 
-## 🎮 Features
-- **Cinematic Intro**: AAA-game-inspired loading screen.
-- **3D Backdrop**: Dynamic Three.js scene reacting to rotation.
-- **Steam Library UI**: Projects displayed as a game collection with hover states.
-- **Live Transmission**: Real-time "Now Playing" integration with Last.fm.
-- **HUD Elements**: Scanning lines, vignettes, and custom neon cursor.
+## ⚖️ License
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## 📬 Socials & Contact
-- **GitHub**: [psyxd1](https://github.com/psyxd1)
-- **Discord**: [psy#0000](https://discord.com/users/1313736920454533171)
-- **Instagram**: [@psyflowz](https://www.instagram.com/psyflowz)
-- **Last.fm**: [psy4z](https://www.last.fm/user/psy4z)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/psyxd1/main-portfolio/main/public/projects/contentforge.png" width="400" />
+</p>
+
+---
+Created with ❤️ by [Saugat Bry](https://github.com/psyxd1)
