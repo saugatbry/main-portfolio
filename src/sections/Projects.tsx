@@ -10,7 +10,7 @@ const projects = [
     tech: ["Next.js", "OpenRouter", "Tailwind"],
     link: "https://contentforgeaii.vercel.app/",
     color: "#00f3ff",
-    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800"
+    img: "/projects/contentforge.png"
   },
   {
     title: "TrackYourCrypto",
@@ -19,7 +19,7 @@ const projects = [
     tech: ["React", "CryptoAPI", "Chart.js"],
     link: "https://trackyourcrypto.vercel.app/",
     color: "#ff00ff",
-    img: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800"
+    img: "/projects/crypto.png"
   },
   {
     title: "Bubu Memorial",
@@ -28,7 +28,7 @@ const projects = [
     tech: ["Vite", "Framer Motion", "CSS3"],
     link: "https://bubu-memorial.vercel.app/",
     color: "#00ff9f",
-    img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800"
+    img: "/projects/bubu.png"
   },
   {
     title: "Loading New Sector...",
