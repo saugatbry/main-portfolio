@@ -69,11 +69,12 @@
   z-index: 100;
   pointer-events: none;
   animation: scan 4s linear infinite;
+  will-change: transform;
 }
 
 @keyframes scan {
-  from { top: 0; }
-  to { top: 100%; }
+  from { transform: translateY(-100px); }
+  to { transform: translateY(100vh); }
 }
 
 /* CRT Vignette */

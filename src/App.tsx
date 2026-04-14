@@ -65,7 +65,7 @@ function App() {
             <AudioPlayer />
             
             {/* HUD Navigation */}
-            <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference pointer-events-none">
+            <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center lg:mix-blend-difference pointer-events-none">
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}

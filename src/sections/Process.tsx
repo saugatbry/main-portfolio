@@ -13,8 +13,14 @@ const steps = [
 const Process = () => {
   const containerRef = React.useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.5 });
-  const [activeStep, setActiveStep] = useState<number | null>(null);
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Droplet distortion variants
   const dropletVariants = {
@@ -22,7 +28,9 @@ const Process = () => {
       borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
     },
     animate: {
-      borderRadius: ["60% 40% 30% 70% / 60% 30% 70% 40%", "30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%"],
+      borderRadius: isMobile 
+        ? "30% 60% 70% 40% / 50% 60% 30% 60%" // Static on mobile to save layout calcs
+        : ["60% 40% 30% 70% / 60% 30% 70% 40%", "30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%"],
       transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
     }
   };
@@ -59,7 +67,7 @@ const Process = () => {
                 animate={isInView ? { 
                   opacity: 1, 
                   scale: 1,
-                  transition: { delay: i * 0.5 } // Staggered reveal matching progress bar
+                  transition: { delay: i * (isMobile ? 0.2 : 0.5) } // Brisk on mobile
                 } : {}}
                 className="flex flex-col items-center text-center group cursor-crosshair pb-10"
                 onMouseEnter={() => setHoveredIdx(i)}
@@ -82,9 +90,9 @@ const Process = () => {
                       animate={isInView ? {
                         scale: [1, 1.4, 1],
                         rotate: [0, 10, -10, 0],
-                        filter: ["blur(0px)", "blur(2px)", "blur(0px)"]
+                        filter: isMobile ? [] : ["blur(0px)", "blur(2px)", "blur(0px)"]
                       } : {}}
-                      transition={{ delay: i * 0.5, duration: 1 }}
+                      transition={{ delay: i * (isMobile ? 0.2 : 0.5), duration: 1 }}
                       className={`
                         ${i < 2 ? 'text-cyber-neon' : 
                           i === 3 ? 'text-cyber-pink' : 
@@ -111,20 +119,20 @@ const Process = () => {
                     <motion.div
                       initial={{ scale: 0, opacity: 0 }}
                       animate={isInView ? { scale: [1, 1.5], opacity: [0.5, 0] } : {}}
-                      transition={{ delay: i * 0.5, duration: 0.8 }}
+                      transition={{ delay: i * (isMobile ? 0.2 : 0.5), duration: 0.8 }}
                       className="absolute inset-0 border-2 border-white rounded-full pointer-events-none"
                     />
 
                     {/* Party Popper behind Improve */}
                     {step.id === 'improve' && (hoveredIdx === i || (isInView && i===4)) && (
                       <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
-                        {[...Array(15)].map((_, idx) => (
+                        {[...Array(isMobile ? 5 : 15)].map((_, idx) => (
                           <motion.div
                             key={idx}
                             initial={{ x: 0, y: 0, scale: 0 }}
                             animate={{ 
-                              x: (Math.random() - 0.5) * 150, 
-                              y: (Math.random() - 0.5) * 150, 
+                              x: (Math.random() - 0.5) * (isMobile ? 80 : 150), 
+                              y: (Math.random() - 0.5) * (isMobile ? 80 : 150), 
                               scale: [0, 1, 0],
                               rotate: Math.random() * 360
                             }}
