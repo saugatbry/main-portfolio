@@ -8,27 +8,12 @@ import Skills from './sections/Skills';
 import Process from './sections/Process';
 import Contact from './sections/Contact';
 import HireMe from './sections/HireMe';
-import MobileApp from './MobileApp';
 import { Terminal } from 'lucide-react';
 import Background3D from './components/Background3D';
 import AudioPlayer from './components/AudioPlayer';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'main' | 'hire'>('main');
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  if (isMobile) {
-    return <MobileApp />;
-  }
 
   return (
     <div className="relative bg-cyber-dark min-h-screen selection:bg-cyber-neon selection:text-black transition-colors duration-1000">

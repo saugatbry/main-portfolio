@@ -105,16 +105,27 @@ const Process = () => {
                         <motion.div
                           key="rocket"
                           initial={{ y: 0, opacity: 1 }}
-                          animate={{ y: -300, opacity: 0, scale: 1.5 }}
-                          transition={{ duration: 0.8, ease: "easeIn" }}
-                          className="text-cyber-pink drop-shadow-[0_0_10px_#ff00ff]"
+                          animate={{ y: -600, opacity: 0, scale: 2 }}
+                          transition={{ duration: 1.2, ease: "anticipate" }}
+                          className="text-cyber-pink drop-shadow-[0_0_20px_#ff00ff] relative"
                         >
-                          <Rocket size={40} className="rotate-0" />
+                          <Rocket size={44} className="rotate-0" />
+                          {/* Rocket Flame */}
                           <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: [0, 1, 0] }}
-                            className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-4 h-12 bg-gradient-to-t from-transparent blur-sm via-cyber-pink to-white rounded-full z-[-1]"
+                            animate={{ scaleY: [1, 2, 1], opacity: [0.5, 1, 0.5] }}
+                            transition={{ duration: 0.1, repeat: Infinity }}
+                            className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-6 h-16 bg-gradient-to-t from-transparent via-orange-500 to-cyber-pink blur-md rounded-full z-[-1]"
                           />
+                          {/* Smoke Particles */}
+                          {[...Array(5)].map((_, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0.8, scale: 1 }}
+                              animate={{ opacity: 0, scale: 4, y: 50, x: (idx - 2) * 20 }}
+                              transition={{ duration: 0.5, delay: 0.1 }}
+                              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/20 rounded-full blur-sm"
+                            />
+                          ))}
                         </motion.div>
                       ) : (
                         <motion.div
