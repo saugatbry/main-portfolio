@@ -52,6 +52,13 @@ const Hero = () => {
   ];
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const scrollToContent = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     const currentRole = roles[roleIndex];
     const typeSpeed = isDeleting ? 50 : 150;
@@ -72,16 +79,6 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 8] }}>
-          <Suspense fallback={null}>
-            <Scene />
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-          </Suspense>
-        </Canvas>
-      </div>
-
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4">
         <motion.div
@@ -107,11 +104,11 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
           >
-            <button className="btn-cyber group">
+            <button onClick={scrollToContent} className="btn-cyber group">
               <span className="relative z-10">ENTER EXPERIENCE</span>
               <div className="absolute inset-0 bg-cyber-neon/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
-            <button className="px-8 py-3 bg-white/5 backdrop-blur-sm border border-white/10 font-orbitron tracking-widest hover:bg-white/10 transition-all uppercase">
+            <button onClick={scrollToContent} className="px-8 py-3 bg-white/5 backdrop-blur-sm border border-white/10 font-orbitron tracking-widest hover:bg-white/10 transition-all uppercase">
               Play Portfolio
             </button>
           </motion.div>
@@ -120,7 +117,8 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        onClick={scrollToContent}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 cursor-pointer"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

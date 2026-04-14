@@ -21,7 +21,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           setTimeout(onComplete, 500);
           return 100;
         }
-        const next = prev + Math.random() * 5;
+        const next = prev + Math.random() * 15;
         
         // Update text based on progress
         const textIdx = Math.floor((next / 100) * texts.length);

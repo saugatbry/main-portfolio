@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
 import CustomCursor from './components/CustomCursor';
@@ -9,13 +9,12 @@ import Skills from './sections/Skills';
 import Process from './sections/Process';
 import NowPlaying from './sections/NowPlaying';
 import Contact from './sections/Contact';
-import { Volume2, VolumeX, Terminal, Search } from 'lucide-react';
+import { Terminal } from 'lucide-react';
+import Background3D from './components/Background3D';
+import AudioPlayer from './components/AudioPlayer';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-
-  // Global scanner line and vignette are handled via CSS in index.css
 
   return (
     <div className="relative bg-cyber-dark min-h-screen selection:bg-cyber-neon selection:text-black">
@@ -26,6 +25,8 @@ function App() {
       {!loading && (
         <>
           <CustomCursor />
+          <Background3D />
+          <AudioPlayer />
           
           {/* HUD Navigation */}
           <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference pointer-events-none">
@@ -37,19 +38,6 @@ function App() {
               <Terminal className="text-cyber-neon" size={24} />
               <span className="font-orbitron font-bold tracking-[4px] text-sm">SB_SYSTEM</span>
             </motion.div>
-            
-            <div className="flex gap-6 pointer-events-auto">
-              <button 
-                onClick={() => setIsMuted(!isMuted)}
-                className="p-2 glass rounded-full hover:border-cyber-neon/50 transition-all group"
-              >
-                {isMuted ? (
-                  <VolumeX size={20} className="text-gray-500 group-hover:text-cyber-neon" />
-                ) : (
-                  <Volume2 size={20} className="text-cyber-neon" />
-                )}
-              </button>
-            </div>
           </nav>
 
           {/* Left HUD Status */}
