@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Lightbulb, Code2, TestTube2, Rocket, ArrowUpRight, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Lightbulb, Code2, TestTube2, Rocket, Sparkles } from 'lucide-react';
 
 const steps = [
   { id: 'idea', icon: <Lightbulb size={32} />, label: "Idea", desc: "Conceptualizing unique digital experiences." },
@@ -11,27 +11,24 @@ const steps = [
 ];
 
 const Process = () => {
+  const containerRef = React.useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.5 });
   const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   // Droplet distortion variants
   const dropletVariants = {
     idle: { 
       borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-      scale: 1
     },
     animate: {
       borderRadius: ["60% 40% 30% 70% / 60% 30% 70% 40%", "30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%"],
       transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-    },
-    hover: {
-      scale: 1.1,
-      borderRadius: "50%",
-      boxShadow: "0 0 30px rgba(0, 243, 255, 0.4)"
     }
   };
 
   return (
-    <section className="py-24 px-4 bg-transparent relative overflow-hidden">
+    <section className="py-24 px-4 bg-transparent relative overflow-hidden" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-black mb-16 text-center neon-text-cyan flex items-center justify-center gap-4 uppercase tracking-tighter">
           <div className="h-[2px] w-12 bg-cyber-neon" />
@@ -40,40 +37,18 @@ const Process = () => {
         </h2>
         
         <div className="relative">
-          {/* Animated Connecting SVG Line */}
-          <div className="absolute top-1/2 left-0 w-full h-24 -translate-y-1/2 hidden md:block px-10">
-            <svg width="100%" height="100%" viewBox="0 0 1000 100" preserveAspectRatio="none">
-              <path
-                d="M 20 50 L 980 50"
-                fill="transparent"
-                stroke="rgba(0, 243, 255, 0.1)"
-                strokeWidth="2"
-              />
-              <motion.path
-                d="M 20 50 L 980 50"
-                fill="transparent"
-                stroke="url(#line-gradient)"
-                strokeWidth="3"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 3, ease: "easeInOut" }}
-              />
-              <motion.circle
-                r="4"
-                fill="#00f3ff"
-                initial={{ offsetDistance: "0%" }}
-                animate={{ offsetDistance: "100%" }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                style={{ offsetPath: "path('M 20 50 L 980 50')", filter: "blur(2px)" }}
-              />
-              <defs>
-                <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#00f3ff" />
-                  <stop offset="100%" stopColor="#ff00ff" />
-                </linearGradient>
-              </defs>
-            </svg>
+          {/* Main Progress Bar Background */}
+          <div className="absolute top-[48px] left-0 w-full h-[2px] bg-white/5 hidden md:block px-10">
+            {/* The Moving Progress Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: "100%" } : {}}
+              transition={{ duration: 2.5, ease: "easeInOut" }}
+              className="h-full bg-gradient-to-r from-cyber-neon via-cyber-pink to-cyber-green relative"
+            >
+              {/* Glowing Head of the Progress Bar */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full blur-[4px] shadow-[0_0_15px_#fff]" />
+            </motion.div>
           </div>
           
           <div className="grid md:grid-cols-5 gap-12 relative z-10">
@@ -81,83 +56,80 @@ const Process = () => {
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, type: "spring" }}
-                onMouseEnter={() => setActiveStep(i)}
-                onMouseLeave={() => setActiveStep(null)}
-                className="flex flex-col items-center text-center group cursor-crosshair"
+                animate={isInView ? { 
+                  opacity: 1, 
+                  scale: 1,
+                  transition: { delay: i * 0.5 } // Staggered reveal matching progress bar
+                } : {}}
+                className="flex flex-col items-center text-center group cursor-crosshair pb-10"
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
               >
                 <div className="relative mb-8">
                   {/* Droplet Shape */}
                   <motion.div
                     variants={dropletVariants}
                     animate="animate"
-                    whileHover="hover"
+                    whileHover={{ scale: 1.1, borderRadius: "50%" }}
                     className={`w-24 h-24 flex items-center justify-center relative z-10 
                       ${i < 2 ? 'bg-cyber-neon/10 border-cyber-neon/30' : 
-                        i === 3 ? 'bg-cyber-pink/10 border-cyber-pink/30 shadow-[0_0_20px_rgba(255,0,255,0.2)]' : 
+                        i === 3 ? 'bg-cyber-pink/10 border-cyber-pink/30' : 
                         'bg-cyber-green/10 border-cyber-green/30'} 
                       border transition-all duration-500 overflow-visible backdrop-blur-sm`}
                   >
-                    <AnimatePresence mode="wait">
-                      {step.id === 'deploy' && activeStep === i ? (
+                    {/* The Icon Animation */}
+                    <motion.div
+                      animate={isInView ? {
+                        scale: [1, 1.4, 1],
+                        rotate: [0, 10, -10, 0],
+                        filter: ["blur(0px)", "blur(2px)", "blur(0px)"]
+                      } : {}}
+                      transition={{ delay: i * 0.5, duration: 1 }}
+                      className={`
+                        ${i < 2 ? 'text-cyber-neon' : 
+                          i === 3 ? 'text-cyber-pink' : 
+                          'text-cyber-green'}
+                      `}
+                    >
+                      {step.id === 'deploy' && hoveredIdx === i ? (
                         <motion.div
-                          key="rocket"
-                          initial={{ y: 0, opacity: 1 }}
-                          animate={{ y: -600, opacity: 0, scale: 2 }}
-                          transition={{ duration: 1.2, ease: "anticipate" }}
-                          className="text-cyber-pink drop-shadow-[0_0_20px_#ff00ff] relative"
+                          initial={{ x: 0, y: 0, rotate: 45, opacity: 1 }}
+                          animate={{ x: 400, y: -400, opacity: 0 }}
+                          transition={{ duration: 0.8, ease: "easeIn" }}
+                          className="relative"
                         >
-                          <Rocket size={44} className="rotate-0" />
-                          {/* Rocket Flame */}
-                          <motion.div 
-                            animate={{ scaleY: [1, 2, 1], opacity: [0.5, 1, 0.5] }}
-                            transition={{ duration: 0.1, repeat: Infinity }}
-                            className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-6 h-16 bg-gradient-to-t from-transparent via-orange-500 to-cyber-pink blur-md rounded-full z-[-1]"
-                          />
-                          {/* Smoke Particles */}
-                          {[...Array(5)].map((_, idx) => (
-                            <motion.div
-                              key={idx}
-                              initial={{ opacity: 0.8, scale: 1 }}
-                              animate={{ opacity: 0, scale: 4, y: 50, x: (idx - 2) * 20 }}
-                              transition={{ duration: 0.5, delay: 0.1 }}
-                              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/20 rounded-full blur-sm"
-                            />
-                          ))}
+                          <Rocket size={40} />
+                          {/* Rocket Trail */}
+                          <div className="absolute -bottom-6 -left-6 w-4 h-12 bg-gradient-to-t from-transparent to-cyber-pink blur-md -rotate-45" />
                         </motion.div>
                       ) : (
-                        <motion.div
-                          key="icon"
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className={`
-                            ${i < 2 ? 'text-cyber-neon' : 
-                              i === 3 ? 'text-cyber-pink' : 
-                              'text-cyber-green'}
-                          `}
-                        >
-                          {step.icon}
-                        </motion.div>
+                        step.icon
                       )}
-                    </AnimatePresence>
+                    </motion.div>
 
-                    {/* Party Popper Effect behind 'Improve' */}
-                    {step.id === 'improve' && activeStep === i && (
-                      <div className="absolute inset-0 z-0 pointer-events-none">
-                        {[...Array(20)].map((_, idx) => (
+                    {/* Sequential "Active" Ring */}
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={isInView ? { scale: [1, 1.5], opacity: [0.5, 0] } : {}}
+                      transition={{ delay: i * 0.5, duration: 0.8 }}
+                      className="absolute inset-0 border-2 border-white rounded-full pointer-events-none"
+                    />
+
+                    {/* Party Popper behind Improve */}
+                    {step.id === 'improve' && (hoveredIdx === i || (isInView && i===4)) && (
+                      <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
+                        {[...Array(15)].map((_, idx) => (
                           <motion.div
                             key={idx}
                             initial={{ x: 0, y: 0, scale: 0 }}
                             animate={{ 
-                              x: (Math.random() - 0.5) * 120, 
-                              y: (Math.random() - 0.5) * 120, 
-                              scale: [0, 1.2, 0],
+                              x: (Math.random() - 0.5) * 150, 
+                              y: (Math.random() - 0.5) * 150, 
+                              scale: [0, 1, 0],
                               rotate: Math.random() * 360
                             }}
                             transition={{ duration: 1, repeat: Infinity }}
-                            className="absolute left-1/2 top-1/2 text-cyber-green font-mono text-[8px]"
+                            className="absolute left-1/2 top-1/2 text-cyber-green font-mono text-[10px]"
                           >
                             {'{ }'}
                           </motion.div>
@@ -185,11 +157,6 @@ const Process = () => {
             ))}
           </div>
         </div>
-      </div>
-      
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] pointer-events-none opacity-5">
-        <div className="w-full h-full border border-cyber-neon rounded-full animate-pulse-slow" />
       </div>
     </section>
   );
