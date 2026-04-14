@@ -93,14 +93,14 @@ const Process = () => {
                     >
                       {step.id === 'deploy' && hoveredIdx === i ? (
                         <motion.div
-                          initial={{ x: 0, y: 0, rotate: 45, opacity: 1 }}
-                          animate={{ x: 400, y: -400, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: "easeIn" }}
+                          initial={{ x: 0, y: 0, rotate: -25, opacity: 1 }}
+                          animate={{ x: 150, y: -600, opacity: 0 }}
+                          transition={{ duration: 1, ease: "easeIn" }}
                           className="relative"
                         >
-                          <Rocket size={40} />
+                          <Rocket size={44} />
                           {/* Rocket Trail */}
-                          <div className="absolute -bottom-6 -left-6 w-4 h-12 bg-gradient-to-t from-transparent to-cyber-pink blur-md -rotate-45" />
+                          <div className="absolute -bottom-10 -left-6 w-5 h-16 bg-gradient-to-t from-transparent via-orange-500 to-cyber-pink blur-md -rotate-[20deg]" />
                         </motion.div>
                       ) : (
                         step.icon
