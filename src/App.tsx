@@ -9,7 +9,6 @@ import Process from './sections/Process';
 import Contact from './sections/Contact';
 import HireMe from './sections/HireMe';
 import Admin from './sections/Admin';
-import NowPlaying from './sections/NowPlaying';
 import { Terminal, Users } from 'lucide-react';
 import Background3D from './components/Background3D';
 import AudioPlayer from './components/AudioPlayer';
@@ -115,7 +114,6 @@ function App() {
               <section id="skills">
                 <Skills />
               </section>
-              <NowPlaying />
               <Process />
               <Contact />
             </main>
