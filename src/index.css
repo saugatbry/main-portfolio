@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-pink: #ff00ff;
+  --neon-purple: #9d00ff;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-dark text-white font-inter selection:bg-cyber-neon selection:text-black;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron tracking-wider uppercase;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-card {
+    @apply glass rounded-xl transition-all duration-300 hover:border-cyber-neon/50 hover:bg-white/10;
+  }
+  
+  .neon-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+  }
+  
+  .neon-text-pink {
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3);
+  }
+
+  .neon-border {
+    @apply border border-cyber-neon shadow-[0_0_10px_rgba(0,243,255,0.3)];
+  }
+
+  .btn-cyber {
+    @apply px-8 py-3 bg-transparent border-2 border-cyber-neon text-cyber-neon font-orbitron font-bold uppercase tracking-widest relative overflow-hidden transition-all duration-300 hover:bg-cyber-neon hover:text-black hover:shadow-[0_0_20px_rgba(0,243,255,0.6)];
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cyber-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyber-neon/30 rounded-full hover:bg-cyber-neon/50 transition-colors;
+}
+
+/* Scanning Line Animation */
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+  z-index: 100;
+  pointer-events: none;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  from { top: 0; }
+  to { top: 100%; }
+}
+
+/* CRT Vignette */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: 50;
+}
