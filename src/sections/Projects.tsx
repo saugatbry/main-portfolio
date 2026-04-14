@@ -22,13 +22,13 @@ const projects = [
     img: "/projects/crypto.png"
   },
   {
-    title: "Bubu Memorial",
-    tagline: "EMOTIONAL EXPERIENCE",
-    desc: "Emotional, aesthetic memorial website experience with glassmorphism UI.",
-    tech: ["Vite", "Framer Motion", "CSS3"],
-    link: "https://bubu-memorial.vercel.app/",
-    color: "#00ff9f",
-    img: "/projects/bubu.png"
+    title: "COVID.AI",
+    tagline: "PANDEMIC ANALYSIS",
+    desc: "Advanced Python-based system for processing and visualizing global pandemic data using Pandas.",
+    tech: ["Python", "Pandas", "Matplotlib"],
+    link: "https://covid19analysis.vercel.app/",
+    color: "#4f46e5",
+    img: "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Loading New Sector...",
@@ -74,7 +74,7 @@ const Projects = () => {
                 delay: i * 0.1 
               }}
               whileHover={{ scale: 1.05, y: -20, zIndex: 50 }}
-              className={`group relative overflow-hidden glass rounded-2xl h-[450px] cursor-pointer block border-white/5 hover:border-cyber-neon/50 shadow-2xl transition-all duration-500 ${project.disabled ? 'opacity-50 grayscale' : ''}`}
+              className={`group relative overflow-hidden glass rounded-2xl h-[350px] md:h-[450px] cursor-pointer block border-white/5 hover:border-cyber-neon/50 shadow-2xl transition-all duration-500 ${project.disabled ? 'opacity-50 grayscale' : ''}`}
             >
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-125"
