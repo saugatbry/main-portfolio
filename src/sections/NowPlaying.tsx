@@ -50,7 +50,7 @@ const NowPlaying = () => {
   }, []);
 
   return (
-    <section className="py-24 px-4 bg-cyber-dark/80 backdrop-blur-sm border-y border-white/5">
+    <section className="py-24 px-4 bg-transparent border-y border-white/5">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-4 mb-12 justify-center">
           <Music className="text-cyber-pink animate-pulse" />

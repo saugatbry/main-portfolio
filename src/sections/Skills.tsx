@@ -30,7 +30,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="py-24 px-4 bg-cyber-dark overflow-hidden">
+    <section className="py-24 px-4 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4 uppercase tracking-[10px]">Augmentations</h2>

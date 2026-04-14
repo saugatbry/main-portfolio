@@ -13,7 +13,7 @@ const socials = [
 
 const Contact = () => {
   return (
-    <section className="py-24 px-4 bg-cyber-dark relative">
+    <section className="py-24 px-4 bg-transparent relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4 uppercase">Contact Me</h2>

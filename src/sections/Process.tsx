@@ -12,7 +12,7 @@ const steps = [
 
 const Process = () => {
   return (
-    <section className="py-24 px-4 bg-black/60 relative overflow-hidden">
+    <section className="py-24 px-4 bg-transparent relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-black mb-16 text-center neon-text-cyan">WORKFLOW PROTOCOL</h2>
         

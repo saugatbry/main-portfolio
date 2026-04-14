@@ -44,11 +44,11 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="py-24 px-4 bg-black/40">
+    <section className="py-24 px-4 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-16">
           <div>
-            <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4">LIBRARY</h2>
+            <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4">PROJECTS</h2>
             <p className="text-gray-500 font-mono tracking-widest uppercase">Select an experience to deploy</p>
           </div>
           <div className="hidden md:block text-right">
@@ -64,11 +64,16 @@ const Projects = () => {
               href={project.disabled ? '#' : project.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.05, y: -10 }}
+              initial={{ opacity: 0, y: 100, rotate: i % 2 === 0 ? -10 : 10, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: i * 0.1 
+              }}
+              whileHover={{ scale: 1.05, y: -20, zIndex: 50 }}
               className={`group relative overflow-hidden glass rounded-2xl h-[450px] cursor-pointer block border-white/5 hover:border-cyber-neon/50 shadow-2xl transition-all duration-500 ${project.disabled ? 'opacity-50 grayscale' : ''}`}
             >
               <div 
