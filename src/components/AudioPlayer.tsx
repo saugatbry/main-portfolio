@@ -13,6 +13,14 @@ const AudioPlayer = () => {
         animate={{ opacity: 1, x: 0 }}
         className="glass-card px-4 py-2 flex items-center gap-3 border-cyber-pink/30 hover:border-cyber-pink transition-all group"
       >
+        <motion.div 
+          animate={!isMuted ? { rotate: 360 } : {}}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="w-10 h-10 rounded-full border-2 border-cyber-pink/50 overflow-hidden shrink-0"
+        >
+          <img src="https://i.ytimg.com/vi/LYvWDSs1bsc/hqdefault.jpg" alt="Disc" className="w-full h-full object-cover" />
+        </motion.div>
+
         <div className="flex gap-[2px] h-4 items-end">
           {[...Array(4)].map((_, i) => (
             <motion.div
@@ -26,7 +34,7 @@ const AudioPlayer = () => {
         
         <div className="flex flex-col">
           <span className="text-[10px] text-cyber-pink font-bold uppercase tracking-widest">Now Playing</span>
-          <span className="text-[10px] text-white/50 truncate max-w-[100px]">LYvWDSs1bsc</span>
+          <span className="text-[10px] text-white/50 truncate max-w-[150px]">Playboi Carti, Kanye West - 2024 (INSTRUMENTAL)</span>
         </div>
 
         <button 

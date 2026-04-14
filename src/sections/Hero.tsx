@@ -82,14 +82,14 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 1.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <span className="text-cyber-neon font-mono tracking-widest block mb-4">
             [ SYSTEM ONLINE ]
           </span>
-          <h1 className="text-5xl md:text-8xl font-black mb-6 neon-text-cyan">
+          <h1 className="text-5xl md:text-9xl font-black mb-6 neon-text-cyan drop-shadow-[0_0_15px_rgba(0,243,255,0.4)]">
             SAUGAT BRY
           </h1>
           <div className="h-12">
@@ -99,7 +99,7 @@ const Hero = () => {
           </div>
           
           <motion.div 
-            className="mt-12 flex flex-col md:flex-row gap-6 justify-center"
+            className="mt-12 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
@@ -107,9 +107,6 @@ const Hero = () => {
             <button onClick={scrollToContent} className="btn-cyber group">
               <span className="relative z-10">ENTER EXPERIENCE</span>
               <div className="absolute inset-0 bg-cyber-neon/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </button>
-            <button onClick={scrollToContent} className="px-8 py-3 bg-white/5 backdrop-blur-sm border border-white/10 font-orbitron tracking-widest hover:bg-white/10 transition-all uppercase">
-              Play Portfolio
             </button>
           </motion.div>
         </motion.div>

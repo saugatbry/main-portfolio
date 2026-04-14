@@ -37,7 +37,7 @@ const About = () => {
           
           <div className="space-y-6 text-xl text-gray-400 leading-relaxed font-light">
             <p>
-              Hi, I'm <span className="text-white font-bold">Saugat Bry</span> (also known as Rashmi Thakur). 
+              Hi, I'm <span className="text-white font-bold">Saugat Bry</span> (aka <span className="text-cyber-neon font-bold">psy4z</span> or <span className="text-cyber-pink font-bold">saugiiman</span>). 
               Currently a Class 12 student, living somewhere on the blue planet 🌍.
             </p>
             <p>

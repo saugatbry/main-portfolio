@@ -44,12 +44,25 @@ const Scene = () => {
 const Background3D = () => {
   const { scrollYProgress } = useScroll();
   const [blur, setBlur] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    return scrollYProgress.onChange((latest) => {
-      // Apply blur as user scrolls down
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    const scrollUnsub = scrollYProgress.onChange((latest) => {
       setBlur(latest * 15);
     });
+
+    return () => {
+       window.removeEventListener('mousemove', handleMouseMove);
+       scrollUnsub();
+    };
   }, [scrollYProgress]);
 
   return (
@@ -59,7 +72,12 @@ const Background3D = () => {
     >
       <Canvas camera={{ position: [0, 0, 8] }}>
         <Suspense fallback={null}>
-          <Scene />
+          <group 
+            rotation={[mousePos.y * 0.2, mousePos.x * 0.2, 0]}
+            position={[mousePos.x * 0.5, -mousePos.y * 0.5, 0]}
+          >
+            <Scene />
+          </group>
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
         </Suspense>
       </Canvas>

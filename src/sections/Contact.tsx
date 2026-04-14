@@ -16,7 +16,7 @@ const Contact = () => {
     <section className="py-24 px-4 bg-cyber-dark relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4 uppercase">Direct Link</h2>
+          <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4 uppercase">Contact Me</h2>
           <p className="text-gray-500 font-mono">Establish a point-to-point connection</p>
         </div>
 

@@ -59,56 +59,60 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={i}
+              href={project.disabled ? '#' : project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              className={`group relative overflow-hidden glass-card h-[450px] cursor-pointer ${project.disabled ? 'opacity-50 grayscale' : ''}`}
+              whileHover={{ scale: 1.05, y: -10 }}
+              className={`group relative overflow-hidden glass rounded-2xl h-[450px] cursor-pointer block border-white/5 hover:border-cyber-neon/50 shadow-2xl transition-all duration-500 ${project.disabled ? 'opacity-50 grayscale' : ''}`}
             >
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-125"
                 style={{ backgroundImage: `url(${project.img})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent group-hover:via-black/40 transition-all" />
               
-              <div className="absolute top-4 right-4 flex gap-2">
+              <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 transition-transform">
                 {!project.disabled && (
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    className="p-2 bg-black/60 backdrop-blur-md rounded-full border border-white/20 hover:border-cyber-neon transition-colors"
-                  >
-                    <ExternalLink size={18} className="text-cyber-neon" />
-                  </motion.a>
+                  <div className="p-2 bg-cyber-neon text-black rounded-lg shadow-[0_0_15px_#00f3ff]">
+                    <ExternalLink size={18} />
+                  </div>
                 )}
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="text-xs font-mono tracking-[4px] text-cyber-neon mb-2 block uppercase">
-                  {project.tagline}
-                </span>
-                <h3 className="text-2xl font-bold mb-3 font-orbitron group-hover:neon-text-cyan transition-all duration-300">
+              <div className="absolute bottom-0 left-0 right-0 p-8 transform group-hover:translate-y-[-10px] transition-transform duration-500">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-[2px] bg-cyber-neon group-hover:w-16 transition-all duration-500" />
+                  <span className="text-xs font-mono tracking-[4px] text-cyber-neon uppercase">
+                    {project.tagline}
+                  </span>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-3 font-orbitron group-hover:text-cyber-neon transition-all duration-300 drop-shadow-[0_0_10px_rgba(0,243,255,0.3)]">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm mb-6 line-clamp-2">
+                
+                <p className="text-gray-400 text-sm mb-6 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   {project.desc}
                 </p>
                 
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((t, idx) => (
-                    <span key={idx} className="text-[10px] px-2 py-1 bg-white/10 rounded uppercase font-mono border border-white/5">
+                    <span key={idx} className="text-[9px] px-2 py-1 bg-white/5 rounded-full border border-white/10 uppercase font-mono group-hover:border-cyber-neon/30 transition-colors">
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Steam-style border effect */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-cyber-neon transition-all duration-300 rounded-xl" />
-            </motion.div>
+              {/* Advanced Glow Effect */}
+              <div className="absolute -inset-px bg-gradient-to-tr from-cyber-neon/20 via-transparent to-cyber-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+            </motion.a>
           ))}
         </div>
       </div>
