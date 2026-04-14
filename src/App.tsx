@@ -9,11 +9,14 @@ import Process from './sections/Process';
 import Contact from './sections/Contact';
 import HireMe from './sections/HireMe';
 import Admin from './sections/Admin';
+import NowPlaying from './sections/NowPlaying';
 import { Terminal, Users } from 'lucide-react';
 import Background3D from './components/Background3D';
 import AudioPlayer from './components/AudioPlayer';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState<'main' | 'hire' | 'admin'>('main');
   const [visits, setVisits] = useState<number>(0);
 
@@ -49,7 +52,9 @@ function App() {
       <CustomCursor />
       
       <AnimatePresence mode="wait">
-        {currentPage === 'admin' ? (
+        {loading ? (
+          <LoadingScreen key="loading" onComplete={() => setLoading(false)} />
+        ) : currentPage === 'admin' ? (
           <motion.div key="admin" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Admin onLogout={() => setCurrentPage('main')} />
           </motion.div>
@@ -110,6 +115,7 @@ function App() {
               <section id="skills">
                 <Skills />
               </section>
+              <NowPlaying />
               <Process />
               <Contact />
             </main>
