@@ -5,16 +5,19 @@
 [![GitHub Stars](https://img.shields.io/github/stars/psyxd1/main-portfolio?style=for-the-badge&color=00f3ff&logo=github)](https://github.com/psyxd1/main-portfolio/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff00ff?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+## ⭐ Support the Project
+If you find this project cool or useful, please **star the repository!** It helps with visibility and shows your support for futuristic web development. 🚀
+
 ---
 
 ## 🖥️ Core Architecture
 Built with high-performance frameworks and immersive 3D technologies for a true "Neural Link" feel.
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
 ---
 
