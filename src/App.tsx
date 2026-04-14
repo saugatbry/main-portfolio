@@ -18,16 +18,30 @@ function App() {
   const [visits, setVisits] = useState<number>(0);
 
   useEffect(() => {
-    // Check if user is trying to access admin via URL
+    // Check for admin route
     if (window.location.search.includes('panel=admin') || window.location.pathname === '/administration') {
       setCurrentPage('admin');
     }
 
-    // Visitor tracking
-    fetch('https://api.countapi.xyz/hit/saugatbry-portfolio/visits')
-      .then(res => res.json())
-      .then(data => setVisits(data.value || 1204))
-      .catch(() => setVisits(Math.floor(Math.random() * 500) + 1000));
+    // New Counter API (counterapi.dev)
+    const handleVisits = async () => {
+      const apiKey = import.meta.env.VITE_COUNTER_API_KEY;
+      const baseUrl = 'https://api.counterapi.dev/v2/saugats-team-3738/first-counter-3738';
+      
+      try {
+        // Increment count
+        const response = await fetch(`${baseUrl}/up`, {
+          headers: { 'Authorization': `Bearer ${apiKey}` }
+        });
+        const data = await response.json();
+        setVisits(data.count || 0);
+      } catch (err) {
+        console.error("Counter API failed, using fallback.");
+        setVisits(Math.floor(Math.random() * 500) + 1200);
+      }
+    };
+
+    handleVisits();
   }, []);
 
   return (
@@ -78,7 +92,6 @@ function App() {
               </div>
             </nav>
 
-            {/* Left HUD Status */}
             <div className="fixed left-6 bottom-10 z-40 hidden lg:block font-mono text-[10px] text-cyber-neon/30 leading-loose mix-blend-difference">
               <div>STATUS: ONLINE</div>
               <div>UPTIME: {new Date().getHours()}:{new Date().getMinutes()}:{new Date().getSeconds()}</div>
@@ -101,7 +114,6 @@ function App() {
               <Contact />
             </main>
 
-            {/* Overlay effects */}
             <div className="scan-line" />
             <div className="vignette" />
           </motion.div>

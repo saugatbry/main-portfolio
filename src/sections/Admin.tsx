@@ -10,14 +10,28 @@ const Admin = ({ onLogout }: { onLogout: () => void }) => {
   const [stats, setStats] = useState({ visits: 0, uptime: '99.9%', location: 'Global' });
 
   useEffect(() => {
-    fetch('https://api.countapi.xyz/get/saugatbry-portfolio/visits')
-      .then(res => res.json())
-      .then(data => setStats(s => ({ ...s, visits: data.value || 0 })));
+    const fetchStats = async () => {
+      try {
+        const response = await fetch('https://api.counterapi.dev/v2/saugats-team-3738/first-counter-3738', {
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_COUNTER_API_KEY}`
+          }
+        });
+        const data = await response.json();
+        setStats(s => ({ ...s, visits: data.count || 0 }));
+      } catch (err) {
+        console.error("Failed to fetch admin stats:", err);
+      }
+    };
+    fetchStats();
   }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === 'saugatbry' && password === 'gitabaraiely60') {
+    const validUser = import.meta.env.VITE_ADMIN_USER;
+    const validPass = import.meta.env.VITE_ADMIN_PASS;
+
+    if (username === validUser && password === validPass) {
       setIsLoggedIn(true);
       setError('');
     } else {
@@ -149,11 +163,11 @@ const Admin = ({ onLogout }: { onLogout: () => void }) => {
           <div className="space-y-3 font-mono text-[10px] opacity-60">
             <div className="flex gap-4">
               <span className="text-cyan-600">[0.00021s]</span>
-              <span>ADMIN_CORE: Session initialized for user saugatbry</span>
+              <span>ADMIN_CORE: Session initialized for user {import.meta.env.VITE_ADMIN_USER}</span>
             </div>
             <div className="flex gap-4">
               <span className="text-cyan-600">[0.00045s]</span>
-              <span>COUNT_API: Synchronizing hits from neural-link-01</span>
+              <span>COUNTER_API: Synchronizing hits from saugats-team-3738</span>
             </div>
             <div className="flex gap-4">
               <span className="text-green-600">[0.00092s]</span>
