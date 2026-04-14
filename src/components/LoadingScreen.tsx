@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
-    const timer = setTimeout(onComplete, 3000);
+    const timer = setTimeout(onComplete, 1500);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
