@@ -1,50 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, VolumeX, Music, ExternalLink, Activity, Info } from 'lucide-react';
+import { Volume2, VolumeX, Music, ExternalLink, Activity, Info, Clock } from 'lucide-react';
 
 const DISCORD_ID = "1313736920454533171";
+const LASTFM_USER = "psy4z";
+const LASTFM_API_KEY = "428987b1c31a74205f275685a4ea0b6c";
 
 const AudioPlayer = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const [data, setData] = useState<any>(null);
-  const [error, setError] = useState(false);
+  const [lanyardData, setLanyardData] = useState<any>(null);
+  const [lastFmData, setLastFmData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchLanyard = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-        const res = await response.json();
-        if (res.success) {
-          setData(res.data);
-          setError(false);
-        } else {
-          setError(true);
+        // 1. Fetch Lanyard (Live)
+        const lanyardRes = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`).then(r => r.json());
+        if (lanyardRes.success) setLanyardData(lanyardRes.data);
+
+        // 2. Fetch Last.fm (Recent Fallback)
+        const lastFmRes = await fetch(
+          `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=1`
+        ).then(r => r.json());
+        
+        if (lastFmRes.recenttracks?.track?.[0]) {
+          setLastFmData(lastFmRes.recenttracks.track[0]);
         }
       } catch (err) {
-        setError(true);
+        console.error("Data fetch error:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchLanyard();
-    const interval = setInterval(fetchLanyard, 3000);
+    fetchData();
+    const interval = setInterval(fetchData, 5000); // 5s refresh
     return () => clearInterval(interval);
   }, []);
 
-  // Enhanced Detection: Check official Spotify link OR activities list
-  const spotifyData = data?.spotify;
-  const isListeningOfficial = data?.listening_to_spotify;
+  // Priority Logic
+  const isLive = lanyardData?.listening_to_spotify || lanyardData?.activities?.find((a: any) => a.name === "Spotify" || a.type === 2);
   
-  // Fallback: search activities for Spotify
-  const fallbackActivity = data?.activities?.find((a: any) => a.name === "Spotify" || a.type === 2);
-  
-  const isPlaying = isListeningOfficial || fallbackActivity;
-  
-  const songInfo = spotifyData || (fallbackActivity ? {
-    song: fallbackActivity.details,
-    artist: fallbackActivity.state,
-    album_art_url: fallbackActivity.assets?.large_image ? `https://i.scdn.co/image/${fallbackActivity.assets.large_image.split(':')[1]}` : null,
-    track_id: fallbackActivity.sync_id
-  } : null);
+  const songInfo = isLive ? {
+    title: lanyardData.spotify?.song || lanyardData?.activities?.find((a: any) => a.name === "Spotify")?.details,
+    artist: lanyardData.spotify?.artist || lanyardData?.activities?.find((a: any) => a.name === "Spotify")?.state,
+    image: lanyardData.spotify?.album_art_url || (lanyardData?.activities?.find((a: any) => a.name === "Spotify")?.assets?.large_image ? `https://i.scdn.co/image/${lanyardData.activities.find((a: any) => a.name === "Spotify").assets.large_image.split(':')[1]}` : null),
+    url: lanyardData.spotify?.track_id ? `https://open.spotify.com/track/${lanyardData.spotify.track_id}` : null,
+    isLive: true
+  } : lastFmData ? {
+    title: lastFmData.name,
+    artist: lastFmData.artist['#text'],
+    image: lastFmData.image[3]['#text'],
+    url: lastFmData.url,
+    isLive: false
+  } : null;
 
   return (
     <div className="fixed bottom-6 right-6 z-[100] flex items-center gap-4">
@@ -55,34 +65,34 @@ const AudioPlayer = () => {
       >
         {/* Animated Disc / Album Art */}
         <motion.div 
-          animate={isPlaying ? { rotate: 360 } : {}}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className={`w-11 h-11 rounded-full border-2 ${isPlaying ? 'border-cyber-green/50' : 'border-white/10'} overflow-hidden shrink-0 relative`}
+          animate={songInfo?.isLive ? { rotate: 360 } : {}}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className={`w-11 h-11 rounded-full border-2 ${songInfo?.isLive ? 'border-cyber-green/50' : 'border-white/10'} overflow-hidden shrink-0 relative`}
         >
-          {songInfo?.album_art_url ? (
-            <img src={songInfo.album_art_url} alt="Album Art" className="w-full h-full object-cover" />
+          {songInfo?.image ? (
+            <img src={songInfo.image} alt="Cover" className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full bg-white/5 flex items-center justify-center">
-              {error ? <Info size={18} className="text-red-500 animate-pulse" /> : <Music size={18} className="text-white/20" />}
+              <Music size={18} className="text-white/20" />
             </div>
           )}
-          {isPlaying && (
-            <div className="absolute inset-0 bg-cyber-green/10 flex items-center justify-center">
+          {songInfo?.isLive && (
+            <div className="absolute inset-0 bg-cyber-green/5 flex items-center justify-center">
               <div className="w-2.5 h-2.5 bg-black rounded-full border border-white/20" />
             </div>
           )}
         </motion.div>
 
-        {/* Visualizer Bars */}
+        {/* Visualizer Bars (Static or Animated) */}
         <div className="flex gap-[3px] h-4 items-end mx-1">
           {[...Array(4)].map((_, i) => (
             <motion.div
               key={i}
               animate={{ 
-                height: isPlaying ? [4, 16, 8, 12, 4] : [4, 6, 4] 
+                height: songInfo?.isLive ? [4, 16, 8, 12, 4] : [4, 4, 4] 
               }}
               transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.1 }}
-              className={`w-[3px] ${isPlaying ? 'bg-cyber-green' : 'bg-white/10'}`}
+              className={`w-[3px] ${songInfo?.isLive ? 'bg-cyber-green' : 'bg-white/20'}`}
             />
           ))}
         </div>
@@ -90,44 +100,41 @@ const AudioPlayer = () => {
         {/* Info Text */}
         <div className="flex flex-col min-w-[120px] max-w-[220px]">
           <div className="flex items-center gap-2">
-            <span className={`text-[8px] font-bold uppercase tracking-[0.2em] ${isPlaying ? 'text-cyber-green' : 'text-white/30'}`}>
-              {error ? 'ERR: DISCORD_NOT_FOUND' : isPlaying ? 'Live Sync' : 'Frequency Idle'}
+            <span className={`text-[8px] font-bold uppercase tracking-[0.2em] ${songInfo?.isLive ? 'text-cyber-green' : 'text-white/40'}`}>
+              {songInfo?.isLive ? 'Live Sync' : 'Last Played'}
             </span>
-            {isPlaying && <Activity size={8} className="text-cyber-green animate-pulse" />}
+            {songInfo?.isLive ? (
+              <Activity size={8} className="text-cyber-green animate-pulse" />
+            ) : (
+              <Clock size={8} className="text-white/20" />
+            )}
           </div>
           
-          <span className="text-[11px] font-orbitron text-white font-black truncate leading-tight tracking-widest">
-            {error ? 'JOIN_LANYARD_DISCORD' : isPlaying ? songInfo.song : 'BRAIN_OFFLINE'}
+          <span className="text-[11px] font-orbitron text-white font-black truncate leading-tight tracking-widest group-hover:text-cyber-green transition-colors">
+            {songInfo ? songInfo.title : 'BRAIN_OFFLINE'}
           </span>
           
-          {isPlaying ? (
-            <span className="text-[10px] font-mono text-white/50 truncate">
-              {songInfo.artist}
-            </span>
-          ) : (
-            <span className="text-[8px] font-mono text-white/20 uppercase">
-              {error ? 'discord.gg/lanyard' : 'Awaiting Signal...'}
-            </span>
-          )}
+          <span className="text-[10px] font-mono text-white/50 truncate">
+            {songInfo ? songInfo.artist : 'Waiting for connection...'}
+          </span>
         </div>
 
         {/* Link / Control */}
         <div className="flex items-center gap-1 ml-2 pl-2 border-l border-white/10">
-          {isPlaying && songInfo.track_id ? (
+          {songInfo?.url ? (
             <a 
-              href={`https://open.spotify.com/track/${songInfo.track_id}`}
+              href={songInfo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 text-cyber-green hover:bg-cyber-green/20 rounded-full transition-all hover:scale-110 active:scale-90"
-              title="Open in Spotify"
+              className={`p-1.5 rounded-full transition-all hover:scale-110 active:scale-90 ${songInfo.isLive ? 'text-cyber-green hover:bg-cyber-green/20' : 'text-white/30 hover:bg-white/10'}`}
+              title="Open Spotify"
             >
               <ExternalLink size={14} />
             </a>
           ) : (
             <button 
               onClick={() => setIsMuted(!isMuted)}
-              className={`p-1.5 transition-colors rounded-full ${error ? 'text-red-500/50' : 'text-white/30 hover:text-white/60'}`}
-              title={error ? "Join Lanyard Discord to fix" : isMuted ? "Unmute BG Audio" : "Mute BG Audio"}
+              className="p-1.5 text-white/30 hover:text-white/60 transition-colors rounded-full"
             >
               {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
             </button>
@@ -135,14 +142,14 @@ const AudioPlayer = () => {
         </div>
       </motion.div>
 
-      {/* Background YouTube Audio */}
-      {!isPlaying && (
+      {/* Hidden YouTube BG Audio */}
+      {!songInfo?.isLive && (
         <div className="hidden">
           <iframe
             width="0"
             height="0"
             src={`https://www.youtube.com/embed/LYvWDSs1bsc?autoplay=1&mute=${isMuted ? 1 : 0}&loop=1&playlist=LYvWDSs1bsc`}
-            title="YouTube video player"
+            title="YouTube Player"
             allow="autoplay"
           />
         </div>
@@ -152,6 +159,7 @@ const AudioPlayer = () => {
 };
 
 export default AudioPlayer;
+
 
 
 
