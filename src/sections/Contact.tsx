@@ -8,7 +8,7 @@ const socials = [
   { icon: <Instagram />, label: "Instagram", handle: "@psyflowz", link: "https://www.instagram.com/psyflowz", color: "#E1306C" },
   { icon: <Music />, label: "Last.fm", handle: "psy4z", link: "https://www.last.fm/user/psy4z", color: "#D31F27" },
   { icon: <Globe />, label: "Personal", handle: "yoursit.ee", link: "https://yoursit.ee/psy4z", color: "#00f3ff" },
-  { icon: <Mail />, label: "Email", handle: "psyfeind@gmail.com", link: "mailto:psyfeind@gmail.com", color: "#00ff9f" }
+  { icon: <Mail />, label: "Email", handle: "psyduckbry@gmail.com", link: "mailto:psyduckbry@gmail.com", color: "#00ff9f" }
 ];
 
 const Contact = () => {

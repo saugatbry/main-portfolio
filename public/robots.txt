@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saugatbry.online/sitemap.xml

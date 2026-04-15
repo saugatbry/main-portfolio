@@ -38,14 +38,13 @@ const About = () => {
           <div className="space-y-6 text-xl text-gray-400 leading-relaxed font-light">
             <p>
               Hi, I'm <span className="text-white font-bold">Saugat Bry</span> (aka <span className="text-cyber-neon font-bold">psy4z</span> or <span className="text-cyber-pink font-bold">saugiiman</span>). 
-              Currently a Class 12 student, living somewhere on the blue planet 🌍.
+              I am a dedicated <span className="text-white font-semibold">Game Developer</span> and <span className="text-white font-semibold">AI Engineer</span> currently based in Nepal.
             </p>
             <p>
-              I have a strong urge to learn everything about technology — from game development to AI and full-stack systems. 
-              Not available 24/7 due to school, but always tries to respond and help when needed.
+              This immersive <span className="text-cyber-neon">3D Portfolio website</span> showcases my journey through the realms of technology — from advanced <span className="text-white">Game Development</span> to cutting-edge <span className="text-white">AI integration</span> and scalable <span className="text-white">Full-Stack systems</span>.
             </p>
             <p className="border-l-4 border-cyber-neon pl-6 py-2 bg-white/5 italic">
-              "I believe in building real projects, not just learning theory. Focused on creating tools, systems, and experiences that actually solve problems."
+              "I specialize in building real-world projects with futuristic 3D UI/UX. My goal is to create immersive web experiences that push the boundaries of what's possible on the internet."
             </p>
           </div>
         </motion.div>

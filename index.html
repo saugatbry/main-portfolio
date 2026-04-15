@@ -1,59 +1,94 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Saugat Bry (psy4z/saugiiman) - Futuristic Portfolio. Game Developer, AI Builder, and Full-Stack Engineer." />
-    <meta name="keywords" content="Saugat Bry, psy4z, saugiiman, portfolio, game developer, full stack developer, AI builder, three.js, react, cyberpunk portfolio" />
-    <meta name="author" content="Saugat Bry" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="SAUGAT BRY // SYSTEM_TERMINAL" />
-    <meta property="og:description" content="High-end futuristic portfolio experience. Exploring the boundaries of Game Dev and AI." />
-    <meta property="og:image" content="/projects/contentforge.png" />
 
-    <title>SAUGAT BRY // SYSTEM_TERMINAL</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        background-color: #050505;
-        margin: 0;
-        overflow-x: hidden;
-        color: white;
-      }
-      /* Custom Cursor Styles */
-      .custom-cursor {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #00f3ff;
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s ease;
-        mix-blend-mode: difference;
-      }
-      .custom-cursor::after {
-        content: '';
-        width: 4px;
-        height: 4px;
-        background: #00f3ff;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 0 10px #00f3ff;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Discover the immersive 3D portfolio made by Saugat Bry, an expert Game Developer, AI Builder, and Full-Stack Engineer. Experience cutting-edge web design and futuristic digital experiences." />
+  <meta name="keywords"
+    content="Saugat Bry, saugatbry, portfolio, game developer, full stack developer, AI builder, 3d website, three.js portfolio, react developer, futuristic web design, immersive web experience" />
+  <meta name="author" content="Saugat Bry" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://saugatbry.online/" />
+  <meta property="og:title" content="Saugat Bry | Portfolio" />
+  <meta property="og:description"
+    content="Step into the future with Saugat Bry's immersive 3D portfolio. Showcasing expertise in Game Development, AI, and Full-Stack Engineering." />
+  <meta property="og:image" content="/favicon.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://saugatbry.online/" />
+  <meta property="twitter:title" content="Saugat Bry | Futuristic 3D Portfolio | Game Dev & AI Engineer" />
+  <meta property="twitter:description"
+    content="Step into the future with Saugat Bry's immersive 3D portfolio. Showcasing expertise in Game Development, AI, and Full-Stack Engineering." />
+  <meta property="twitter:image" content="/favicon.png" />
+
+  <title>Saugat Bry 3D Portfolio | Game Dev & AI Engineer</title>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Saugat Bry",
+      "url": "https://saugatbry.online/",
+      "jobTitle": "Game Developer & AI Engineer",
+      "sameAs": [
+        "https://github.com/psy4z",
+        "https://linkedin.com/in/saugatbry"
+      ],
+      "description": "Saugat Bry is a Game Developer, AI Builder, and Full-Stack Engineer specializing in immersive 3D web experiences."
+    }
+    </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background-color: #050505;
+      margin: 0;
+      overflow-x: hidden;
+      color: white;
+    }
+
+    /* Custom Cursor Styles */
+    .custom-cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #00f3ff;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    .custom-cursor::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: #00f3ff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px #00f3ff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
