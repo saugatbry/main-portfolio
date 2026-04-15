@@ -112,7 +112,7 @@ const AudioPlayer = () => {
         <div className="flex flex-col min-w-[130px] max-w-[240px]">
           <div className="flex items-center gap-2">
             <span className={`text-[8px] font-bold uppercase tracking-[0.2em] ${songInfo.isLive ? 'text-cyber-green' : 'text-white/40'}`}>
-              {isSearching ? 'Scanning Sync...' : songInfo.isLive ? 'Live Stream' : 'Archive Stream'}
+              {isSearching ? 'Scanning Sync...' : songInfo.isLive ? 'Now Playing' : 'Recently Played'}
             </span>
             {songInfo.isLive ? (
               <Activity size={8} className="text-cyber-green animate-pulse" />
