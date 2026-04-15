@@ -12,7 +12,7 @@ const steps = [
 
 const ProcessStep = ({ step, i, isMobile, totalSteps }: { step: any, i: number, isMobile: boolean, totalSteps: number }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const isInView = useInView(ref, { once: false, amount: 0.1 });
   const [isTapped, setIsTapped] = useState(false);
 
   const isActive = isMobile ? isInView || isTapped : false;
@@ -51,10 +51,10 @@ const ProcessStep = ({ step, i, isMobile, totalSteps }: { step: any, i: number, 
           whileHover={!isMobile ? { scale: 1.1, borderRadius: "50%" } : {}}
           className={`w-28 h-28 flex items-center justify-center relative z-10 
             ${i < 2 ? 'bg-cyber-neon/10 border-cyber-neon/30' : 
-              i === 3 ? 'bg-cyber-pink/10 border-cyber-pink/30' : 
+              i === 3 ? 'bg-cyber-green/10 border-cyber-green/30' : 
               'bg-cyber-green/10 border-cyber-green/30'} 
             border transition-all duration-500 overflow-visible backdrop-blur-md
-            ${isActive ? 'scale-110 shadow-[0_0_30px_rgba(255,255,255,0.1)]' : ''}`}
+            ${isActive ? 'scale-110 shadow-[0_0_30px_rgba(0,255,159,0.2)]' : ''}`}
         >
           <motion.div
             animate={isActive ? {
@@ -63,7 +63,7 @@ const ProcessStep = ({ step, i, isMobile, totalSteps }: { step: any, i: number, 
             } : {}}
             className={`
               ${i < 2 ? 'text-cyber-neon' : 
-                i === 3 ? 'text-cyber-pink' : 
+                i === 3 ? 'text-cyber-green' : 
                 'text-cyber-green'}
             `}
           >
@@ -75,7 +75,7 @@ const ProcessStep = ({ step, i, isMobile, totalSteps }: { step: any, i: number, 
                 className="relative"
               >
                 <Rocket size={44} />
-                <div className="absolute -bottom-10 -left-6 w-5 h-16 bg-gradient-to-t from-transparent via-orange-500 to-cyber-pink blur-md -rotate-[20deg]" />
+                <div className="absolute -bottom-10 -left-6 w-5 h-16 bg-gradient-to-t from-transparent via-cyber-green to-cyber-neon blur-md -rotate-[20deg]" />
               </motion.div>
             ) : (
               step.icon
@@ -119,7 +119,7 @@ const ProcessStep = ({ step, i, isMobile, totalSteps }: { step: any, i: number, 
       
       <h3 className={`text-2xl font-orbitron font-black mb-3 
         ${i < 2 ? 'text-cyber-neon' : 
-          i === 3 ? 'text-cyber-pink' : 
+          i === 3 ? 'text-cyber-green' : 
           'text-cyber-green'} transition-colors duration-300`}>
         {step.label}
       </h3>
@@ -145,10 +145,10 @@ const Process = () => {
   return (
     <section className="py-24 px-4 bg-transparent relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-black mb-20 text-center neon-text-cyan flex items-center justify-center gap-4 uppercase tracking-tighter">
-          <div className="h-[2px] w-8 md:w-12 bg-cyber-neon" />
+        <h2 className="text-3xl md:text-5xl font-black mb-20 text-center neon-text-cyan flex items-center justify-center gap-4 uppercase tracking-tighter text-cyber-green shadow-cyber-green/20">
+          <div className="h-[2px] w-8 md:w-12 bg-cyber-green shadow-[0_0_10px_rgba(0,255,159,0.5)]" />
           WORKFLOW PROTOCOL
-          <div className="h-[2px] w-8 md:w-12 bg-cyber-neon" />
+          <div className="h-[2px] w-8 md:w-12 bg-cyber-green shadow-[0_0_10px_rgba(0,255,159,0.5)]" />
         </h2>
         
         <div className="relative">
@@ -160,7 +160,7 @@ const Process = () => {
                 whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 2.5, ease: "easeInOut" }}
-                className="h-full bg-gradient-to-r from-cyber-neon via-cyber-pink to-cyber-green relative"
+                className="h-full bg-gradient-to-r from-cyber-neon via-cyber-green to-cyber-green relative"
               >
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full blur-[4px] shadow-[0_0_15px_#fff]" />
               </motion.div>

@@ -50,13 +50,13 @@ const AudioPlayer = () => {
     title: lanyardData.spotify?.song || liveActivity?.details || "Unknown Track",
     artist: lanyardData.spotify?.artist || liveActivity?.state || "Unknown Artist",
     image: lanyardData.spotify?.album_art_url || (liveActivity?.assets?.large_image ? `https://i.scdn.co/image/${liveActivity.assets.large_image.split(':')[1]}` : null),
-    url: lanyardData.spotify?.track_id ? `https://open.spotify.com/track/${lanyardData.spotify.track_id}` : null,
+    url: lanyardData.spotify?.track_id ? `https://open.spotify.com/track/${lanyardData.spotify.track_id}` : `https://open.spotify.com/search/${encodeURIComponent((lanyardData.spotify?.song || liveActivity?.details || "") + ' ' + (lanyardData.spotify?.artist || liveActivity?.state || ""))}`,
     isLive: true
   } : lastFmData ? {
     title: lastFmData.name,
     artist: lastFmData.artist['#text'],
     image: lastFmData.image?.[3]?.['#text'] || lastFmData.image?.[2]?.['#text'],
-    url: lastFmData.url,
+    url: `https://open.spotify.com/search/${encodeURIComponent(lastFmData.name + ' ' + lastFmData.artist['#text'])}`,
     isLive: false
   } : {
     title: "NEURAL_LINK_ACTIVE",
