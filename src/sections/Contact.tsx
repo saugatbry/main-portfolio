@@ -6,7 +6,7 @@ const socials = [
   { icon: <Github />, label: "GitHub", handle: "psyxd1", link: "https://github.com/psyxd1", color: "#6e5494" },
   { icon: <MessageSquare />, label: "Discord", handle: "psy#0000", link: "https://discord.com/users/1313736920454533171", color: "#5865F2" },
   { icon: <Instagram />, label: "Instagram", handle: "@psyflowz", link: "https://www.instagram.com/psyflowz", color: "#E1306C" },
-  { icon: <Music />, label: "Last.fm", handle: "psy4z", link: "https://www.last.fm/user/psy4z", color: "#D31F27" },
+  { icon: <Music />, label: "Spotify", handle: "psy4z", link: "https://open.spotify.com/user/your_spotify_id", color: "#00ff9f" },
   { icon: <Globe />, label: "Personal", handle: "yoursit.ee", link: "https://yoursit.ee/psy4z", color: "#00f3ff" },
   { icon: <Mail />, label: "Email", handle: "psyduckbry@gmail.com", link: "mailto:psyduckbry@gmail.com", color: "#00ff9f" }
 ];
