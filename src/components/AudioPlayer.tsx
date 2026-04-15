@@ -4,7 +4,7 @@ import { Volume2, VolumeX, Music, ExternalLink, Activity, Info, Clock, Search } 
 
 const DISCORD_ID = "1313736920454533171";
 const LASTFM_USER = "psy4z";
-const LASTFM_API_KEY = "428987b1c31a74205f275685a4ea0b6c";
+const LASTFM_API_KEY = "650fc2bafe4903f994c2c283626faf16";
 
 const AudioPlayer = () => {
   const [isMuted, setIsMuted] = useState(true);
