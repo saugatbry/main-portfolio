@@ -53,19 +53,6 @@ const SpotifyNowPlaying = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyber-green/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-4 mb-12 justify-center"
-        >
-          <div className="p-2 bg-cyber-green/10 rounded-lg border border-cyber-green/20">
-            <Music className="text-cyber-green w-6 h-6" />
-          </div>
-          <h2 className="text-2xl font-orbitron tracking-[0.2em] font-bold text-white uppercase">
-            Live Frequency
-          </h2>
-        </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
