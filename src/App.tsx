@@ -114,12 +114,8 @@ function App() {
               <section id="skills">
                 <Skills />
               </section>
-              <section id="process">
-                <Process />
-              </section>
-              <section id="contact">
-                <Contact />
-              </section>
+              <Process />
+              <Contact />
             </main>
 
             <div className="scan-line" />
