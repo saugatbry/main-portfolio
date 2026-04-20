@@ -177,27 +177,27 @@ const Admin = ({ onLogout }: { onLogout: () => void }) => {
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-bold">Portfolio Mode</h3>
-                <p className="text-xs text-gray-400">Minimal aesthetic: only Projects & Spotify, hides Game Dev, Contact & Hire Me</p>
+                <h3 className="font-bold text-cyan-400">Portfolio Mode</h3>
+                <p className="text-xs text-gray-400 mt-1">Minimal aesthetic: only Projects & Spotify, hides Game Dev, Contact & Hire Me</p>
               </div>
               <button 
                 onClick={handleTogglePortfolio}
-                className={`w-16 h-8 rounded-full transition-colors flex items-center px-1 ${portfolioMode ? 'bg-cyan-500' : 'bg-gray-700'}`}
+                className={`px-6 py-3 font-bold border transition-all text-xs uppercase tracking-widest ${portfolioMode ? 'bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.3)]' : 'border-gray-700 text-gray-500 hover:border-gray-500'}`}
               >
-                <div className={`w-6 h-6 bg-white rounded-full transition-transform ${portfolioMode ? 'translate-x-8' : 'translate-x-0'}`} />
+                {portfolioMode ? 'INITIALIZED' : 'INITIALIZE'}
               </button>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between border border-white/5 bg-black/20 p-6">
               <div>
-                <h3 className="font-bold">Social Mode</h3>
-                <p className="text-xs text-gray-400">Changes "Contact Me" into "Socials", ensuring an aesthetic connection-focused footer</p>
+                <h3 className="font-bold text-pink-500">Social Mode</h3>
+                <p className="text-xs text-gray-400 mt-1">Changes "Contact Me" into "Socials", ensuring an aesthetic connection-focused footer</p>
               </div>
               <button 
                 onClick={handleToggleSocial}
-                className={`w-16 h-8 rounded-full transition-colors flex items-center px-1 ${socialMode ? 'bg-pink-500' : 'bg-gray-700'}`}
+                className={`px-6 py-3 font-bold border transition-all text-xs uppercase tracking-widest ${socialMode ? 'bg-pink-500/20 border-pink-500 text-pink-400 shadow-[0_0_15px_rgba(236,72,153,0.3)]' : 'border-gray-700 text-gray-500 hover:border-gray-500'}`}
               >
-                <div className={`w-6 h-6 bg-white rounded-full transition-transform ${socialMode ? 'translate-x-8' : 'translate-x-0'}`} />
+                {socialMode ? 'INITIALIZED' : 'INITIALIZE'}
               </button>
             </div>
           </div>
