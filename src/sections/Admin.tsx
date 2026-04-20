@@ -8,6 +8,23 @@ const Admin = ({ onLogout }: { onLogout: () => void }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [stats, setStats] = useState({ visits: 0, uptime: '99.9%', location: 'Global' });
+  const [portfolioMode, setPortfolioMode] = useState(localStorage.getItem('portfolioMode') === 'true');
+  const [socialMode, setSocialMode] = useState(localStorage.getItem('socialMode') === 'true');
+
+  const handleTogglePortfolio = () => {
+    const newVal = !portfolioMode;
+    setPortfolioMode(newVal);
+    localStorage.setItem('portfolioMode', newVal.toString());
+    // Also trigger custom event just in case
+    window.dispatchEvent(new Event('storage'));
+  };
+
+  const handleToggleSocial = () => {
+    const newVal = !socialMode;
+    setSocialMode(newVal);
+    localStorage.setItem('socialMode', newVal.toString());
+    window.dispatchEvent(new Event('storage'));
+  };
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -151,6 +168,38 @@ const Admin = ({ onLogout }: { onLogout: () => void }) => {
             </div>
             <div className="text-4xl font-black mb-2">RUNNING</div>
             <div className="text-xs uppercase tracking-widest text-gray-400 font-bold">Traffic_Protocol_Status</div>
+          </div>
+        </div>
+
+        {/* Appearance Controls */}
+        <div className="mt-8 border border-white/10 bg-white/5 p-8">
+          <h2 className="text-sm font-bold uppercase tracking-widest mb-6 text-cyan-400">Appearance Settings</h2>
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-bold">Portfolio Mode</h3>
+                <p className="text-xs text-gray-400">Minimal aesthetic: only Projects & Spotify, hides Game Dev, Contact & Hire Me</p>
+              </div>
+              <button 
+                onClick={handleTogglePortfolio}
+                className={`w-16 h-8 rounded-full transition-colors flex items-center px-1 ${portfolioMode ? 'bg-cyan-500' : 'bg-gray-700'}`}
+              >
+                <div className={`w-6 h-6 bg-white rounded-full transition-transform ${portfolioMode ? 'translate-x-8' : 'translate-x-0'}`} />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-bold">Social Mode</h3>
+                <p className="text-xs text-gray-400">Changes "Contact Me" into "Socials", ensuring an aesthetic connection-focused footer</p>
+              </div>
+              <button 
+                onClick={handleToggleSocial}
+                className={`w-16 h-8 rounded-full transition-colors flex items-center px-1 ${socialMode ? 'bg-pink-500' : 'bg-gray-700'}`}
+              >
+                <div className={`w-6 h-6 bg-white rounded-full transition-transform ${socialMode ? 'translate-x-8' : 'translate-x-0'}`} />
+              </button>
+            </div>
           </div>
         </div>
 

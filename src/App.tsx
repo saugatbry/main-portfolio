@@ -18,6 +18,17 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState<'main' | 'hire' | 'admin'>('main');
   const [visits, setVisits] = useState<number>(0);
+  const [portfolioMode, setPortfolioMode] = useState(localStorage.getItem('portfolioMode') === 'true');
+  const [socialMode, setSocialMode] = useState(localStorage.getItem('socialMode') === 'true');
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setPortfolioMode(localStorage.getItem('portfolioMode') === 'true');
+      setSocialMode(localStorage.getItem('socialMode') === 'true');
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   useEffect(() => {
     // Check for admin route
@@ -87,12 +98,14 @@ function App() {
                   </span>
                 </div>
 
-                <button 
-                  onClick={() => setCurrentPage('hire')}
-                  className="px-6 py-2 border border-cyber-neon/30 text-cyber-neon font-orbitron text-[10px] tracking-[4px] hover:bg-cyber-neon hover:text-black transition-all"
-                >
-                  HIRE_ME
-                </button>
+                {!portfolioMode && (
+                  <button 
+                    onClick={() => setCurrentPage('hire')}
+                    className="px-6 py-2 border border-cyber-neon/30 text-cyber-neon font-orbitron text-[10px] tracking-[4px] hover:bg-cyber-neon hover:text-black transition-all"
+                  >
+                    HIRE_ME
+                  </button>
+                )}
               </div>
             </nav>
 
@@ -104,18 +117,29 @@ function App() {
             </div>
 
             <main className="relative z-10">
-              <Hero />
-              <section id="about">
-                <About />
-              </section>
+              <Hero portfolioMode={portfolioMode} />
+              
+              {!portfolioMode && (
+                <section id="about">
+                  <About />
+                </section>
+              )}
+
               <section id="projects">
                 <Projects />
               </section>
-              <section id="skills">
-                <Skills />
-              </section>
-              <Process />
-              <Contact />
+
+              {!portfolioMode && (
+                <>
+                  <section id="skills">
+                    <Skills />
+                  </section>
+                  <Process />
+                </>
+              )}
+
+              {/* Show socials when socialMode is on, or if we want it by default? It said socialMode enabled */}
+              <Contact isSocialMode={socialMode} />
             </main>
 
             <div className="scan-line" />

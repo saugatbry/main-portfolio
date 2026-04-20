@@ -11,13 +11,17 @@ const socials = [
   { icon: <Mail />, label: "Email", handle: "psyduckbry@gmail.com", link: "mailto:psyduckbry@gmail.com", color: "#00ff9f" }
 ];
 
-const Contact = () => {
+const Contact = ({ isSocialMode }: { isSocialMode?: boolean }) => {
   return (
     <section className="py-24 px-4 bg-transparent relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4 uppercase">Contact Me</h2>
-          <p className="text-gray-500 font-mono">Establish a point-to-point connection</p>
+          <h2 className="text-4xl md:text-6xl font-black neon-text-cyan mb-4 uppercase">
+            {isSocialMode ? 'Social Connect' : 'Contact Me'}
+          </h2>
+          <p className="text-gray-500 font-mono">
+            {isSocialMode ? 'Discover my digital dimensions and networks' : 'Establish a point-to-point connection'}
+          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">

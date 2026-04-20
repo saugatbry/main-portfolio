@@ -41,26 +41,29 @@ const Scene = () => {
   );
 };
 
-const Hero = () => {
+const Hero = ({ portfolioMode }: { portfolioMode?: boolean }) => {
   const [text, setText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
-  const roles = [
+  const baseRoles = [
     "Game Developer",
     "Web Developer",
     "AI Builder",
     "Full-Stack Engineer"
   ];
+  
+  const roles = portfolioMode ? baseRoles.filter(r => r !== "Game Developer") : baseRoles;
   const [isDeleting, setIsDeleting] = useState(false);
 
   const scrollToContent = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    const targetId = portfolioMode ? 'projects' : 'about';
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   useEffect(() => {
-    const currentRole = roles[roleIndex];
+    const currentRole = roles[roleIndex % roles.length];
     const typeSpeed = isDeleting ? 50 : 150;
     
     const timeout = setTimeout(() => {
