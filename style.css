@@ -105,8 +105,8 @@ h1 .highlight { background: rgba(211, 47, 47, 0.15); padding: 0 0.5rem; border-r
     height: 100vh; 
     display: flex; 
     flex-direction: column; 
-    justify-content: flex-start; 
-    padding: 12vh 8% 0; 
+    justify-content: center; 
+    padding: 0 8%; 
 }
 
 .projects-header { 
@@ -130,12 +130,13 @@ h1 .highlight { background: rgba(211, 47, 47, 0.15); padding: 0 0.5rem; border-r
 .projects-slider { 
     display: flex; 
     flex-wrap: nowrap; 
-    gap: 3rem; 
+    gap: 6vw; 
     will-change: transform; 
+    align-items: center;
 }
-.project-slide { min-width: 500px; }
-.slide-card { background: #0c0c0c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; padding: 3rem; transition: var(--transition); height: 100%; }
-.slide-card:hover { border-color: var(--accent-color); background: #121212; }
+.project-slide { min-width: 600px; height: 65vh; }
+.slide-card { background: #0c0c0c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; padding: 3.5rem; transition: var(--transition); height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+.slide-card:hover { border-color: var(--accent-color); background: #121212; transform: translateY(-10px); }
 
 .card-meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
 .slide-card h3 { font-size: 3rem; line-height: 1; margin-bottom: 0.5rem; }
