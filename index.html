@@ -6,6 +6,9 @@
     <title>Saugat — Full Stack Developer</title>
     <meta name="description" content="Portfolio of Saugat, a full-stack developer specializing in building modern web apps, high-quality tools, and critical backend infrastructure.">
     
+    <!-- CSP: Allow libraries and scripts -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self';">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +42,7 @@
         <header class="hero" id="about">
             <div class="hero-meta">
                 <span><span class="dot">●</span> SAUGAT'S SITE • V1</span>
-                <span id="live-time">SK • 09:43</span>
+                <span id="live-time">SK • --:--</span>
             </div>
             <h1>
                 Hi, I'm <span class="highlight">Saugat</span><br>
@@ -304,152 +307,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Portfolio Logic -->
-    <script>
-        const initPortfolio = () => {
-            console.log("Portfolio: Booting system...");
-            
-            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined') {
-                console.error("Portfolio: Libraries missing. Retrying...");
-                setTimeout(initPortfolio, 500);
-                return;
-            }
-
-            gsap.registerPlugin(ScrollTrigger);
-
-            class Portfolio {
-                constructor() {
-                    this.initLenis();
-                    this.initHorizontalScroll();
-                    this.initScrollReveal();
-                    this.initTime();
-                    this.initMagneticButtons();
-                    this.initStackAnimations();
-                    
-                    // Refresh ScrollTrigger after a short delay to ensure layout is settled
-                    setTimeout(() => ScrollTrigger.refresh(), 500);
-                    console.log("Portfolio: System Online.");
-                }
-
-                initLenis() {
-                    const lenis = new Lenis({
-                        duration: 1.2,
-                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                        smooth: true,
-                    });
-
-                    const raf = (time) => {
-                        lenis.raf(time);
-                        requestAnimationFrame(raf);
-                    };
-                    requestAnimationFrame(raf);
-
-                    lenis.on('scroll', ScrollTrigger.update);
-                    gsap.ticker.add((time) => {
-                        lenis.raf(time * 1000);
-                    });
-
-                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                        anchor.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            const target = this.getAttribute('href');
-                            if (target) lenis.scrollTo(target);
-                        });
-                    });
-                }
-
-                initHorizontalScroll() {
-                    const container = document.querySelector('.projects-horizontal-container');
-                    const slider = document.querySelector('.projects-slider');
-                    if (!container || !slider) return;
-
-                    const mm = gsap.matchMedia();
-                    mm.add("(min-width: 1025px)", () => {
-                        const totalWidth = slider.scrollWidth;
-                        const windowWidth = window.innerWidth;
-                        const scrollDistance = totalWidth - (windowWidth * 0.8);
-
-                        gsap.to(slider, {
-                            x: -scrollDistance,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: container,
-                                pin: true,
-                                scrub: 1,
-                                start: "top top",
-                                end: () => "+=" + scrollDistance,
-                                invalidateOnRefresh: true,
-                            }
-                        });
-                    });
-
-                    mm.add("(max-width: 1024px)", () => {
-                        gsap.set(slider, { clearProps: "all" });
-                    });
-                }
-
-                initScrollReveal() {
-                    const revealElements = document.querySelectorAll('.hero h1, .hero-description, .hero-btns, .stack h2, .timeline h2, .contact-header, .social-card, .timeline-item');
-                    revealElements.forEach(el => {
-                        gsap.fromTo(el, 
-                            { opacity: 0, y: 30 },
-                            { 
-                                opacity: 1, y: 0, duration: 1, ease: "power4.out",
-                                scrollTrigger: {
-                                    trigger: el,
-                                    start: "top 85%",
-                                    toggleActions: "play none none none"
-                                }
-                            }
-                        );
-                    });
-                }
-
-                initStackAnimations() {
-                    const bars = document.querySelectorAll('.bar-inner');
-                    bars.forEach(bar => {
-                        const targetWidth = bar.style.width;
-                        bar.style.width = "0%";
-                        gsap.to(bar, {
-                            width: targetWidth, duration: 1.5, ease: "power4.out",
-                            scrollTrigger: { trigger: bar, start: "top 90%" }
-                        });
-                    });
-                }
-
-                initTime() {
-                    const timeSpan = document.getElementById('live-time');
-                    if (!timeSpan) return;
-                    const update = () => {
-                        const now = new Date();
-                        const hours = now.getHours().toString().padStart(2, '0');
-                        const minutes = now.getMinutes().toString().padStart(2, '0');
-                        timeSpan.innerText = `SK • ${hours}:${minutes}`;
-                    };
-                    update();
-                    setInterval(update, 60000);
-                }
-
-                initMagneticButtons() {
-                    const buttons = document.querySelectorAll('.btn-work, .btn-discord, .say-hi-btn');
-                    buttons.forEach(btn => {
-                        btn.addEventListener('mousemove', (e) => {
-                            const rect = btn.getBoundingClientRect();
-                            const x = e.clientX - rect.left - rect.width / 2;
-                            const y = e.clientY - rect.top - rect.height / 2;
-                            gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.3, ease: "power2.out" });
-                        });
-                        btn.addEventListener('mouseleave', () => {
-                            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-                        });
-                    });
-                }
-            }
-
-            new Portfolio();
-        };
-
-        window.addEventListener('load', initPortfolio);
-    </script>
+    <!-- Portfolio Logic (Cache Busted) -->
+    <script src="main.js?v=4.0.1"></script>
 </body>
 </html>
