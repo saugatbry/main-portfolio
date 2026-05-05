@@ -116,7 +116,7 @@ h1 .highlight { background: rgba(211, 47, 47, 0.15); padding: 0 0.5rem; border-r
 }
 
 .projects-header { 
-    margin-bottom: 6vh; 
+    margin-bottom: 4vh; 
     z-index: 10;
 }
 
@@ -140,15 +140,15 @@ h1 .highlight { background: rgba(211, 47, 47, 0.15); padding: 0 0.5rem; border-r
     will-change: transform; 
     align-items: center;
 }
-.project-slide { min-width: 600px; height: 65vh; }
-.slide-card { background: #080808; border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 32px; padding: 4rem; transition: var(--transition); height: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
+.project-slide { min-width: 600px; height: 58vh; }
+.slide-card { background: #080808; border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 32px; padding: 3rem 3.5rem; transition: var(--transition); height: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
 .slide-card:hover { border-color: var(--accent-color); background: #0c0c0c; transform: translateY(-10px) scale(1.02); }
 
 .card-meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem; }
-.slide-card h3 { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; font-weight: 700; letter-spacing: -0.02em; }
-.tagline { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
+.slide-card h3 { font-size: 3rem; line-height: 1; margin-bottom: 0.8rem; font-weight: 700; letter-spacing: -0.02em; }
+.tagline { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; }
 
-.card-img-container { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 16px; margin-bottom: 2.5rem; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); }
+.card-img-container { width: 100%; aspect-ratio: 16/8; background: #000; border-radius: 12px; margin-bottom: 2rem; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); }
 .card-img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; filter: grayscale(1); transition: var(--transition); }
 .slide-card:hover .card-img-container img { opacity: 0.75; filter: grayscale(0) sepia(0.5) hue-rotate(-50deg) contrast(1.1); }
 
