@@ -1,29 +1,38 @@
 /**
- * Saugat | Portfolio Logic
+ * Saugat | Portfolio Logic (Final Vanilla Version)
  * Smooth scroll, Horizontal Projects, and Dynamic UI
  */
 
 class Portfolio {
     constructor() {
-        console.log("Portfolio: Initializing...");
+        console.log("Portfolio: Booting system...");
+        
+        // Wait for GSAP and ScrollTrigger to be available
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-            console.error("Portfolio: GSAP or ScrollTrigger not found!");
+            console.error("Portfolio: GSAP/ScrollTrigger missing. Retrying in 500ms...");
+            setTimeout(() => new Portfolio(), 500);
             return;
         }
-        
+
         gsap.registerPlugin(ScrollTrigger);
-        console.log("Portfolio: ScrollTrigger registered.");
-        
+        console.log("Portfolio: GSAP Ready.");
+
         this.initLenis();
         this.initHorizontalScroll();
         this.initScrollReveal();
         this.initTime();
         this.initMagneticButtons();
         this.initStackAnimations();
-        console.log("Portfolio: All modules initialized.");
+        
+        console.log("Portfolio: System Online.");
     }
 
     initLenis() {
+        if (typeof Lenis === 'undefined') {
+            console.error("Portfolio: Lenis missing.");
+            return;
+        }
+
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -37,7 +46,7 @@ class Portfolio {
 
         requestAnimationFrame(raf);
 
-        // Link Lenis to GSAP ScrollTrigger
+        // Sync with ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
@@ -47,7 +56,8 @@ class Portfolio {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                lenis.scrollTo(this.getAttribute('href'));
+                const target = this.getAttribute('href');
+                if (target) lenis.scrollTo(target);
             });
         });
     }
@@ -79,7 +89,6 @@ class Portfolio {
             });
         });
 
-        // Mobile fallback - ensure things are reset
         mm.add("(max-width: 1024px)", () => {
             gsap.set(slider, { clearProps: "all" });
         });
@@ -156,6 +165,9 @@ class Portfolio {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Start only when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => new Portfolio());
+} else {
     new Portfolio();
-});
+}

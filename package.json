@@ -1,14 +1,9 @@
 {
   "name": "saugat-portfolio",
   "version": "1.0.0",
-  "description": "Premium developer portfolio inspired by spikerko.org.",
-  "main": "main.js",
+  "description": "Premium developer portfolio.",
   "scripts": {
-    "build": "tsc main.ts --outFile main.js",
-    "watch": "tsc main.ts --outFile main.js --watch",
     "start": "python -m http.server 8000"
   },
-  "devDependencies": {
-    "typescript": "^5.0.0"
-  }
+  "devDependencies": {}
 }
