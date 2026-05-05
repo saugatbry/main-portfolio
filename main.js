@@ -5,7 +5,14 @@
 
 class Portfolio {
     constructor() {
+        console.log("Portfolio: Initializing...");
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            console.error("Portfolio: GSAP or ScrollTrigger not found!");
+            return;
+        }
+        
         gsap.registerPlugin(ScrollTrigger);
+        console.log("Portfolio: ScrollTrigger registered.");
         
         this.initLenis();
         this.initHorizontalScroll();
@@ -13,6 +20,7 @@ class Portfolio {
         this.initTime();
         this.initMagneticButtons();
         this.initStackAnimations();
+        console.log("Portfolio: All modules initialized.");
     }
 
     initLenis() {
