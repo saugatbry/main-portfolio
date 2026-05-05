@@ -1,9 +1,6 @@
 {
   "name": "saugat-portfolio",
   "version": "1.0.0",
-  "description": "Premium developer portfolio.",
-  "scripts": {
-    "start": "python -m http.server 8000"
-  },
-  "devDependencies": {}
+  "description": "Premium developer portfolio inspired by spikerko.org",
+  "private": true
 }
