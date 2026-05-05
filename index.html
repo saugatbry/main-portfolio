@@ -1,95 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="cEy7zf0D6V4iuKtom1IpoH9yJqX-MBYG2_vt_O_Th8I" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Discover the immersive 3D portfolio made by Saugat Bry, an expert Game Developer, AI Builder, and Full-Stack Engineer. Experience cutting-edge web design and futuristic digital experiences." />
-  <meta name="keywords"
-    content="Saugat Bry, saugatbry, portfolio, game developer, full stack developer, AI builder, 3d website, three.js portfolio, react developer, futuristic web design, immersive web experience" />
-  <meta name="author" content="Saugat Bry" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://saugatbry.online/" />
-  <meta property="og:title" content="Saugat Bry | Portfolio" />
-  <meta property="og:description"
-    content="Step into the future with Saugat Bry's immersive 3D portfolio. Showcasing expertise in Game Development, AI, and Full-Stack Engineering." />
-  <meta property="og:image" content="/favicon.png" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://saugatbry.online/" />
-  <meta property="twitter:title" content="Saugat Bry | Futuristic 3D Portfolio | Game Dev & AI Engineer" />
-  <meta property="twitter:description"
-    content="Step into the future with Saugat Bry's immersive 3D portfolio. Showcasing expertise in Game Development, AI, and Full-Stack Engineering." />
-  <meta property="twitter:image" content="/favicon.png" />
-
-  <title>Saugat Bry 3D Portfolio | Game Dev & AI Engineer</title>
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Saugat Bry",
-      "url": "https://saugatbry.online/",
-      "jobTitle": "Game Developer & AI Engineer",
-      "sameAs": [
-        "https://github.com/psy4z",
-        "https://linkedin.com/in/saugatbry"
-      ],
-      "description": "Saugat Bry is a Game Developer, AI Builder, and Full-Stack Engineer specializing in immersive 3D web experiences."
-    }
-    </script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
-  <style>
-    body {
-      background-color: #050505;
-      margin: 0;
-      overflow-x: hidden;
-      color: white;
-    }
-
-    /* Custom Cursor Styles */
-    .custom-cursor {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #00f3ff;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s ease;
-      mix-blend-mode: difference;
-    }
-
-    .custom-cursor::after {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background: #00f3ff;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 10px #00f3ff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saugat — Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Saugat, a full-stack developer specializing in building modern web apps, high-quality tools, and critical backend infrastructure.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lenis Smooth Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#stack">Stack</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="mailto:psyduckbry@gmail.com" class="say-hi-btn">Say hi <i class="fas fa-arrow-right"></i></a>
+    </nav>
 
+    <!-- Grainy Background -->
+    <div class="noise"></div>
+
+    <main id="main-wrapper">
+        <!-- Hero Section -->
+        <header class="hero" id="about">
+            <div class="hero-meta">
+                <span><span class="dot">●</span> SAUGAT'S SITE • V1</span>
+                <span id="live-time">SK • 09:43</span>
+            </div>
+            <h1>
+                Hi, I'm <span class="highlight">Saugat</span><br>
+                a <span class="accent-text">full stack dev</span>
+            </h1>
+            <p class="hero-description">
+                I build anime streaming platforms, AI content tools, and robust backend systems. 
+                Most known for <a href="https://kageplay.ct.ws/">KagePlay</a>.
+            </p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-work">See the work <i class="fas fa-arrow-down"></i></a>
+                <a href="mailto:psyduckbry@gmail.com" class="btn-email">psyduckbry@gmail.com</a>
+            </div>
+
+            <!-- Tech Marquee -->
+            <div class="marquee-container">
+                <div class="marquee">
+                    <span>TypeScript</span><span>React</span><span>Node.js</span><span>Python</span><span>PHP</span><span>C++</span><span>Java</span><span>MySQL</span><span>Tailwind</span>
+                    <span>TypeScript</span><span>React</span><span>Node.js</span><span>Python</span><span>PHP</span><span>C++</span><span>Java</span><span>MySQL</span><span>Tailwind</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Horizontal Projects Section -->
+        <section id="projects" class="projects-horizontal-container">
+            <div class="sticky-wrapper">
+                <div class="projects-header">
+                    <span class="section-label"><span class="dot-accent">●</span> 02 • SELECTED WORK</span>
+                    <h2>Things I've made.<br><span class="muted">Some serious. Some not.</span></h2>
+                </div>
+                <div class="projects-slider">
+                    <!-- Project 1 -->
+                    <div class="project-slide">
+                        <div class="slide-card">
+                            <div class="card-meta">
+                                <span class="index">01</span>
+                                <span class="year">2024 —</span>
+                            </div>
+                            <h3>KagePlay</h3>
+                            <p class="tagline">Anime, but make it premium.</p>
+                            <div class="card-img-container">
+                                <img src="angel.png" alt="KagePlay">
+                            </div>
+                            <p class="card-desc">A high-performance anime streaming platform featuring an ultra-fast HLS player and a premium UI.</p>
+                            <div class="card-tags">
+                                <span>PHP</span><span>HLS.js</span><span>MySQL</span>
+                            </div>
+                            <a href="https://kageplay.ct.ws/" class="card-link" target="_blank">kageplay.ct.ws <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-slide">
+                        <div class="slide-card">
+                            <div class="card-meta">
+                                <span class="index">02</span>
+                                <span class="year">2024</span>
+                            </div>
+                            <h3>ContentForgeAI</h3>
+                            <p class="tagline">AI Content Generator.</p>
+                            <div class="card-img-container">
+                                <img src="angel.png" alt="ContentForgeAI">
+                            </div>
+                            <p class="card-desc">AI-driven content generation tool that automates social media workflows using modern React architecture.</p>
+                            <div class="card-tags">
+                                <span>Next.js</span><span>OpenAI</span><span>TS</span>
+                            </div>
+                            <a href="https://contentforgeaii.vercel.app/" class="card-link" target="_blank">contentforgeaii.vercel.app <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-slide">
+                        <div class="slide-card">
+                            <div class="card-meta">
+                                <span class="index">03</span>
+                                <span class="year">2023</span>
+                            </div>
+                            <h3>TrackYourCrypto</h3>
+                            <p class="tagline">Crypto dashboard.</p>
+                            <div class="card-img-container">
+                                <img src="angel.png" alt="TrackYourCrypto">
+                            </div>
+                            <p class="card-desc">Real-time dashboard for cryptocurrency monitoring, featuring live price feeds and analytics.</p>
+                            <div class="card-tags">
+                                <span>React</span><span>Web3</span><span>API</span>
+                            </div>
+                            <a href="https://trackyourcrypto.vercel.app/" class="card-link" target="_blank">trackyourcrypto.vercel.app <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-slide">
+                        <div class="slide-card">
+                            <div class="card-meta">
+                                <span class="index">04</span>
+                                <span class="year">2023</span>
+                            </div>
+                            <h3>Covid19Analysis</h3>
+                            <p class="tagline">School Data Project.</p>
+                            <div class="card-img-container">
+                                <img src="angel.png" alt="Covid19Analysis">
+                            </div>
+                            <p class="card-desc">A comprehensive data visualization project analyzing pandemic trends and statistics.</p>
+                            <div class="card-tags">
+                                <span>Python</span><span>Pandas</span><span>Charts</span>
+                            </div>
+                            <a href="https://covid19analysis.vercel.app/" class="card-link" target="_blank">covid19analysis.vercel.app <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack Section -->
+        <section id="stack" class="stack">
+            <span class="section-label"><span class="dot-accent">●</span> 03 • STACK</span>
+            <h2>The tools I keep<br><span class="accent-text">reaching for.</span></h2>
+            
+            <div class="stack-container">
+                <div class="stack-bars">
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>TypeScript</span><span>95</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 95%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>Python</span><span>90</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>Node.js</span><span>85</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>C++</span><span>80</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>Java</span><span>80</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>PHP</span><span>95</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 95%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info"><span>React</span><span>90</span></div>
+                        <div class="bar-outer"><div class="bar-inner" style="width: 90%"></div></div>
+                    </div>
+                </div>
+
+                <div class="stack-categories">
+                    <div class="stack-card">
+                        <span class="card-title">LANGUAGES</span>
+                        <div class="tags"><span>TypeScript</span><span>JavaScript</span><span>Python</span><span>C++</span><span>Java</span><span>PHP</span></div>
+                    </div>
+                    <div class="stack-card">
+                        <span class="card-title">FRAMEWORKS</span>
+                        <div class="tags"><span>React</span><span>Next.js</span><span>Express</span><span>Tailwind</span><span>Flask</span></div>
+                    </div>
+                    <div class="stack-card">
+                        <span class="card-title">RUNTIME / TOOLS</span>
+                        <div class="tags"><span>Node.js</span><span>Bun</span><span>Git</span><span>Docker</span><span>MySQL</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline">
+            <span class="section-label"><span class="dot-accent">●</span> 04 • TIMELINE</span>
+            <h2>Five years of<br><span class="accent-text">opening DevTools.</span></h2>
+            
+            <div class="timeline-list">
+                <div class="timeline-item">
+                    <div class="year">2022•</div>
+                    <div class="content">
+                        <h3>First lines of HTML</h3>
+                        <p>Started with small, weird, experimental sites. The kind that exist for a week and teach you everything.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2023•</div>
+                    <div class="content">
+                        <h3>Full Stack Exploration</h3>
+                        <p>Dived deep into Python and PHP. Built my first database-driven apps and discovered the power of the backend.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2024•</div>
+                    <div class="content">
+                        <h3>KagePlay & React</h3>
+                        <p>Launched KagePlay. Picked up React and TypeScript to build better, more performant user experiences.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2025•</div>
+                    <div class="content">
+                        <h3>AI & Scale</h3>
+                        <p>Explored AI integration with ContentForgeAI. Focused on optimizing infrastructure and scaling streaming services.</p>
+                    </div>
+                </div>
+                <div class="timeline-item current">
+                    <div class="year">2026•</div>
+                    <div class="content">
+                        <h3>Now</h3>
+                        <p>Currently building next-generation web tools and pushing the boundaries of what's possible with modern tech.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="contact-header">
+                <span class="section-label"><span class="dot-accent">●</span> 05 • CONTACT</span>
+                <h2>Got an idea, a bug,<br>or just want to say <span class="accent-italic">hi?</span></h2>
+                <p>The fastest way to reach me is Discord.</p>
+                <div class="contact-btns">
+                    <a href="https://discord.com/users/1313736920454533171" class="btn-discord">Discord <i class="fas fa-arrow-right-long"></i></a>
+                    <a href="mailto:psyduckbry@gmail.com" class="btn-email-pill">psyduckbry@gmail.com <i class="fas fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+
+            <div class="social-grid">
+                <a href="https://github.com/saugatbry" class="social-card" target="_blank">
+                    <span class="social-label">GITHUB</span><span class="social-value">@saugatbry</span>
+                    <i class="fas fa-arrow-up-right-from-square arrow"></i>
+                </a>
+                <a href="#" class="social-card" target="_blank">
+                    <span class="social-label">X / TWITTER</span><span class="social-value">@saugatbry</span>
+                    <i class="fas fa-arrow-up-right-from-square arrow"></i>
+                </a>
+                <a href="https://instagram.com/psyflowz" class="social-card" target="_blank">
+                    <span class="social-label">INSTAGRAM</span><span class="social-value">@psyflowz</span>
+                    <i class="fas fa-arrow-up-right-from-square arrow"></i>
+                </a>
+                <a href="https://open.spotify.com/user/313scl6ze3p5ycqkal6vp2pz7wki" class="social-card" target="_blank">
+                    <span class="social-label">SPOTIFY</span><span class="social-value">Saugat</span>
+                    <i class="fas fa-arrow-up-right-from-square arrow"></i>
+                </a>
+                <a href="https://yoursit.ee/psy4z" class="social-card" target="_blank">
+                    <span class="social-label">YOURSIT.EE</span><span class="social-value">/psy4z</span>
+                    <i class="fas fa-arrow-up-right-from-square arrow"></i>
+                </a>
+                <a href="https://discord.com/users/1313736920454533171" class="social-card" target="_blank">
+                    <span class="social-label">DISCORD</span><span class="social-value">@psyduckbry</span>
+                    <i class="fas fa-arrow-up-right-from-square arrow"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-left"><span>&copy; 2026 Saugat</span></div>
+            <div class="footer-right"><span class="status">● Available for projects</span></div>
+        </footer>
+    </main>
+
+    <!-- JS Libraries -->
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
 </html>

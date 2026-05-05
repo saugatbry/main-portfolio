@@ -1,71 +1,25 @@
-# 🌌 SAUGAT BRY // SYSTEM_TERMINAL
-> Next-Generation Cyberpunk Portfolio Experience
+# Saugat | Portfolio (Spikerko Edition)
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Operational-000000?style=for-the-badge&logo=vercel)](https://saugatbry.online/)
-[![GitHub Stars](https://img.shields.io/github/stars/psyxd1/main-portfolio?style=for-the-badge&color=00f3ff&logo=github)](https://github.com/psyxd1/main-portfolio/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-ff00ff?style=for-the-badge)](https://opensource.org/licenses/MIT)
+A high-end, minimalist developer portfolio heavily inspired by **spikerko.org**.
 
-## ⭐ Support the Project
-If you find this project cool or useful, please **star the repository!** It helps with visibility and shows your support for futuristic web development. 🚀
+## 🎨 Aesthetic Refinements
+- **Layout**: Clean, high-contrast, minimalist structure with massive typography.
+- **Navigation**: Centered pill-shaped floating bar.
+- **Accent**: Switched to your requested **Blood Red** (`#D32F2F`) for highlights and buttons.
+- **Background**: Pure black with a subtle grainy texture overlay for a premium digital feel.
+- **Typography**: Space Grotesk for headings and JetBrains Mono for metadata.
 
----
+## 🚀 Key Features
+- **Horizontal Scroll**: Smooth "Selected Work" slider using GSAP.
+- **Tech Stack**: Animated proficiency bars and categorized skill tags.
+- **Chronological Timeline**: Five years of developer journey milestones.
+- **Premium UX**: Lenis smooth scrolling and magnetic button interactions.
 
-## 🖥️ Core Architecture
-Built with high-performance frameworks and immersive 3D technologies for a true "Neural Link" feel.
-
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-
----
-
-## 💎 Elite Features
-
-- **🎮 Game-Ready UI**: Projects displayed as a "Collection" with staggered thrown-card animations.
-- **🌌 3D Neural Space**: Persistent Three.js background with mouse-parallax and scroll-based blur.
-- **🛰️ Mission Control**: Secure, hidden admin portal (`/administration`) for live tracking.
-- **🎯 HUD Cursor**: High-precision custom cursor with real-time X/Y coordinates and target locking.
-- **🛸 Staggered UX**: Seamless performance optimizations for fluid navigation.
+## 📁 File Structure
+- `index.html`: Spikerko-inspired structure.
+- `style.css`: Redesigned CSS with Space Grotesk and Blood Red accents.
+- `main.js`: Functional logic for scroll reveals and dynamic meta-data.
+- `angel.png`: Custom-generated hero/project visual.
 
 ---
-
-## 📬 Protocol: Social Connectivity
-Connect with me across the digital sector.
-
-[Instagram](https://www.instagram.com/saugat_bry) 
-• [GitHub](https://github.com/psyxd1) 
-• [Email](mailto:psyduckbry@gmail.com) 
-• [Portfolio](https://saugatbry.online/)
-
----
-
-## 🛠️ Local Initialization
-
-1. **Clone the Terminal**
-   ```bash
-   git clone https://github.com/psyxd1/main-portfolio.git
-   ```
-
-2. **Sync Dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Boot System**
-   ```bash
-   npm run dev
-   ```
-
----
-
-## ⚖️ License
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/psyxd1/main-portfolio/main/public/projects/contentforge.png" width="400" />
-</p>
-
----
-Created with ❤️ by [Saugat Bry](https://github.com/psyxd1)
+Built with ♥ by Antigravity for Saugat.
