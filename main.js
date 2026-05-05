@@ -1,5 +1,5 @@
 /**
- * Saugat | Portfolio Logic (Resilient Version)
+ * Saugat | Portfolio Logic (Premium Version)
  * Smooth scroll, Horizontal Projects, and Dynamic UI
  */
 
@@ -22,9 +22,24 @@ const initPortfolio = () => {
             this.initTime();
             this.initMagneticButtons();
             this.initStackAnimations();
+            this.initHiAnimation();
             
             setTimeout(() => ScrollTrigger.refresh(), 500);
             console.log("Portfolio: System Online.");
+        }
+
+        initHiAnimation() {
+            const hi = document.querySelector('.hi-anim');
+            if (!hi) return;
+
+            gsap.to(hi, {
+                rotate: 20,
+                duration: 0.5,
+                repeat: 5,
+                yoyo: true,
+                ease: "power1.inOut",
+                delay: 1
+            });
         }
 
         initLenis() {
@@ -85,7 +100,7 @@ const initPortfolio = () => {
         }
 
         initScrollReveal() {
-            const revealElements = document.querySelectorAll('.hero h1, .hero-description, .hero-btns, .stack h2, .timeline h2, .contact-header, .social-card, .timeline-item');
+            const revealElements = document.querySelectorAll('.hero h1, .hero-description, .hero-btns, .stack h2, .timeline h2, .contact-header, .social-card, .timeline-item, .flower-symbol');
             revealElements.forEach(el => {
                 gsap.fromTo(el, 
                     { opacity: 0, y: 30 },

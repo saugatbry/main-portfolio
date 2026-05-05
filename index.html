@@ -37,19 +37,34 @@
     <!-- Grainy Background -->
     <div class="noise"></div>
 
+    <!-- Rotating Stamp -->
+    <div class="rotating-stamp">
+        <div class="stamp-inner">
+            <svg viewBox="0 0 100 100">
+                <path id="textPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                <text class="stamp-text">
+                    <textPath xlink:href="#textPath">
+                        SAUGAT'S SITE • COPYRIGHT 2026 • SAUGAT'S SITE • COPYRIGHT 2026 • 
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+    </div>
+
     <main id="main-wrapper">
         <!-- Hero Section -->
         <header class="hero" id="about">
             <div class="hero-meta">
-                <span><span class="dot">●</span> SAUGAT'S SITE • V1</span>
+                <span><span class="dot">●</span> SAUGAT'S SITE <span class="flower-symbol">✺</span> V1</span>
                 <span id="live-time">SK • --:--</span>
             </div>
             <h1>
-                Hi, I'm <span class="highlight">Saugat</span><br>
+                <span class="hi-anim">Hi</span>, I'm <span class="highlight">Saugat</span><br>
                 a <span class="accent-text">full stack dev</span>
             </h1>
             <p class="hero-description">
                 I build anime streaming platforms, AI content tools, and robust backend systems. 
+                Specializing in high-performance web applications and automated digital workflows.
                 Most known for <a href="https://kageplay.ct.ws/">KagePlay</a>.
             </p>
             <div class="hero-btns">
@@ -86,9 +101,9 @@
                             <div class="card-img-container">
                                 <img src="angel.png" alt="KagePlay">
                             </div>
-                            <p class="card-desc">A high-performance anime streaming platform featuring an ultra-fast HLS player and a premium UI.</p>
+                            <p class="card-desc">A high-performance anime streaming platform featuring an ultra-fast HLS player, seamless theater mode, and an automated content delivery system. Designed for a professional, cohesive streaming experience with zero ad intrusion.</p>
                             <div class="card-tags">
-                                <span>PHP</span><span>HLS.js</span><span>MySQL</span>
+                                <span>PHP</span><span>HLS.js</span><span>MySQL</span><span>Tailwind</span>
                             </div>
                             <a href="https://kageplay.ct.ws/" class="card-link" target="_blank">kageplay.ct.ws <i class="fas fa-arrow-right"></i></a>
                         </div>
@@ -106,9 +121,9 @@
                             <div class="card-img-container">
                                 <img src="angel.png" alt="ContentForgeAI">
                             </div>
-                            <p class="card-desc">AI-driven content generation tool that automates social media workflows using modern React architecture.</p>
+                            <p class="card-desc">AI-driven content generation tool that automates social media workflows using modern React architecture. It leverages OpenAI's GPT-4 to generate high-quality copy and creative assets for creators and developers.</p>
                             <div class="card-tags">
-                                <span>Next.js</span><span>OpenAI</span><span>TS</span>
+                                <span>Next.js</span><span>OpenAI</span><span>TS</span><span>Prisma</span>
                             </div>
                             <a href="https://contentforgeaii.vercel.app/" class="card-link" target="_blank">contentforgeaii.vercel.app <i class="fas fa-arrow-right"></i></a>
                         </div>
@@ -126,9 +141,9 @@
                             <div class="card-img-container">
                                 <img src="angel.png" alt="TrackYourCrypto">
                             </div>
-                            <p class="card-desc">Real-time dashboard for cryptocurrency monitoring, featuring live price feeds and analytics.</p>
+                            <p class="card-desc">Real-time dashboard for cryptocurrency monitoring, featuring live price feeds via Web3 APIs and advanced data visualization. Built with a focus on low-latency updates and secure user sessions.</p>
                             <div class="card-tags">
-                                <span>React</span><span>Web3</span><span>API</span>
+                                <span>React</span><span>Web3</span><span>Chart.js</span><span>Node.js</span>
                             </div>
                             <a href="https://trackyourcrypto.vercel.app/" class="card-link" target="_blank">trackyourcrypto.vercel.app <i class="fas fa-arrow-right"></i></a>
                         </div>
@@ -142,13 +157,13 @@
                                 <span class="year">2023</span>
                             </div>
                             <h3>Covid19Analysis</h3>
-                            <p class="tagline">School Data Project.</p>
+                            <p class="tagline">Data Visualization.</p>
                             <div class="card-img-container">
                                 <img src="angel.png" alt="Covid19Analysis">
                             </div>
-                            <p class="card-desc">A comprehensive data visualization project analyzing pandemic trends and statistics.</p>
+                            <p class="card-desc">A comprehensive data analysis project that explores pandemic trends using massive public datasets. Implements complex filtering and predictive modeling to visualize global recovery rates and transmission patterns.</p>
                             <div class="card-tags">
-                                <span>Python</span><span>Pandas</span><span>Charts</span>
+                                <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Flask</span>
                             </div>
                             <a href="https://covid19analysis.vercel.app/" class="card-link" target="_blank">covid19analysis.vercel.app <i class="fas fa-arrow-right"></i></a>
                         </div>
@@ -307,7 +322,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Portfolio Logic (Cache Busted) -->
-    <script src="main.js?v=4.0.1"></script>
+    <!-- Portfolio Logic -->
+    <script src="main.js?v=5.0.2"></script>
 </body>
 </html>
